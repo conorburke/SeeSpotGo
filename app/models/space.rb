@@ -1,6 +1,6 @@
 class Space < ApplicationRecord
   belongs_to :location
-  has_one :owner, through: :location
+  has_one :owner, through: :location, foreign_key: :user_id
   has_many :reservations
 
   SIZES = %w(motorcycle compact standard large RV)
