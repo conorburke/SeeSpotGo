@@ -27,6 +27,6 @@ class Reservation < ApplicationRecord
   end
 
   def end_time_is_in_future
-    errors.add(:end_time, 'must be in the future') if (self.start_time && self.end_time.past?)
+    errors.add(:end_time, 'must be in the future') if (self.end_time && self.end_time.past?)
   end
 end
