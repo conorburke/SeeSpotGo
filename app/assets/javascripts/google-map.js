@@ -18,6 +18,12 @@ function initMap() {
 
   // Create a map object and specify the DOM element for display using defined mapOptions.
   var map = new google.maps.Map(document.getElementById('search-map'), mapOptions);
+
+  // Create Pin.
+  var marker = new google.maps.Marker({
+    position: {lat: 40.7857329, lng: -73.9698574},
+    map: map
+  })
 }
 
 function loadScript() {

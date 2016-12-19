@@ -9,22 +9,36 @@
 # Users
 require 'faker'
 
+locations = [{street_address: "5 W 86th St",
+              city: "New York",
+              state: "NY",
+              zip: "10024"},
+             {street_address: "1252 Madison Ave",
+              city: "New York",
+              state: "NY",
+              zip: "10128"},
+             {street_address: "45 E 81st St",
+              city: "New York",
+              state: "NY",
+              zip: "10028"}]
+
 3.times do |n|
-  User.create(first_name: Faker::Name.first_name,
+  user = User.create(first_name: Faker::Name.first_name,
               last_name: Faker::Name.last_name,
               email: Faker::Internet.email,
               password_digest: "1234",
               phone: "123-456-7890")
+  user.locations.create(locations[n])
 end
 
-Locations
+# Locations
 
-User.all.each do |user|
-  user.locations.create(street_address: Faker::Address.street_address,
-                        city: Faker::Address.city,
-                        state: Faker::Address.state_abbr,
-                        zip: Faker::Address.zip)
-end
+# User.all.each do |user|
+#   user.locations.create(street_address: Faker::Address.street_address,
+#                         city: Faker::Address.city,
+#                         state: Faker::Address.state_abbr,
+#                         zip: Faker::Address.zip)
+# end
 
 # Spaces
 
