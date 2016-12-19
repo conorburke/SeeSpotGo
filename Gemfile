@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "paperclip", "~> 5.0.0"
 
+# Use Bootstrap for Styling
+gem 'bootstrap-sass', '~> 3.3.6'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
