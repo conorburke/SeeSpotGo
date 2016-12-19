@@ -21,6 +21,11 @@ RSpec.describe Reservation, type: :model do
 
   describe 'validations for datetime' do
     it 'ensures start_time is a valid time' do
+      p occupant
+      p location
+      p location.errors
+      p space
+      p reservation
       expect(reservation).to be_valid 
     end
 
