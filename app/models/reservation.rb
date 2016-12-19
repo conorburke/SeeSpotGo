@@ -14,6 +14,8 @@ class Reservation < ApplicationRecord
   validate :start_time_is_in_future, on: :create
   validate :end_time_is_in_future, on: :create
 
+  validates :start_time, :end_time, :overlap => {scope: "space_id", exclude_edges: ["starts_at", "ends_at"]}
+
   def ensure_start_time_is_valid_datetime
     errors.add(:start_time, 'must be a valid datetime') unless (self.start_time.is_a?(ActiveSupport::TimeWithZone))
   end
