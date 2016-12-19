@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 gem 'simplecov', :require => false, :group => :test
@@ -51,10 +52,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
 end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
 end
+
+gem "geocoder"
+gem 'gmaps4rails'
