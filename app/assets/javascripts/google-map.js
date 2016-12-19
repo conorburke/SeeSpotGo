@@ -1,6 +1,6 @@
 var map;
-var markers;
 
+// Map Creation:
 function initMap() {
   // Create map options.
   var mapOptions = {
@@ -23,16 +23,6 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('search-map'), mapOptions);
 }
 
-function createMarker(latlng) {
-  var marker = new google.maps.Marker({
-    position: {lat: latlng[0], lng: latlng[1]},
-    map: map,
-    optimized: false
-  })
-  marker.addListener('click', function(){ alert('hello')})
-  return marker
-}
-
 function loadScript() {
   var script = document.createElement('script');
   script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDn20ttdtOtCSg02P_oONmvRYSrDCb6N7s&callback=initMap";
@@ -41,6 +31,25 @@ function loadScript() {
 
 window.onload = loadScript;
 
+// Marker Creation:
+function createMarker(latlng) {
+  return new google.maps.Marker({
+    position: {lat: latlng[0], lng: latlng[1]},
+    map: map,
+    optimized: false
+  })
+}
+
+function attachSecretMessage(marker, secretMessage) {
+  var infowindow = new google.maps.InfoWindow({
+    content: secretMessage
+  });
+  marker.addListener('click', function() {
+    infowindow.open(marker.get('map'), marker);
+  })
+}
+
+// JQuery:
 $(document).ready(function() {
 
   // Click search button to load all locations onto map.
@@ -54,7 +63,7 @@ $(document).ready(function() {
       markers = [];
       for (var i = 0; i < msg.length; i++) {
         var marker = createMarker(msg[i]);
-        console.log(marker);
+        attachSecretMessage(marker, "hello");
       }
     })
   })
