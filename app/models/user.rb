@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :received_reservations, through: :spaces, source: :reservations
   has_many :requested_reservations, class_name: :Reservation, foreign_key: :occupant_id
   has_many :written_ratings, class_name: :Rating, foreign_key: :rater_id
-  has_many :received_ratings, class_name: :Rating, foreign_key: :user_id
+  has_many :received_ratings, class_name: :Rating
 
   validates :first_name, :last_name, :email, :password_digest, :phone, presence: true
   validates :email, uniqueness: { case_sensitive: false }

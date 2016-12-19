@@ -15,14 +15,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:received_reservations).through(:spaces).source(:reservations) }
     it { should have_many(:requested_reservations).class_name('Reservation').with_foreign_key(:occupant_id) }
     it { should have_many(:written_ratings).class_name('Rating').with_foreign_key(:rater_id) }
-    it { should have_many(:received_ratings).class_name('Rating').with_foreign_key(:user_id) }
-
-    it 'has an average rating' do
-      expect(user.average_rating).to eq 0
-      rating1 = Rating.create(user_id: user.id, rater_id: 2, score: 3, comment: "", reservation_id: 1)
-      rating1 = Rating.create(user_id: user.id, rater_id: 2, score: 4, comment: "", reservation_id: 1)
-      expect(user.average_rating).to eq 3.5
-    end
+    it { should have_many(:received_ratings).class_name('Rating') }
   end
 
   describe "validations" do
