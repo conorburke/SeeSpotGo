@@ -1,4 +1,5 @@
 class Location < ApplicationRecord
+
   belongs_to :owner, class_name: :User, foreign_key: :user_id
   has_many :spaces
   has_many :active_spaces, -> { where(space_active: 1) }, class_name: :Space
@@ -17,4 +18,15 @@ class Location < ApplicationRecord
       errors.add :zip, "code is not valid"
     end
   end
+
+  geocoded_by :full_street_address   # can also be an IP address
+  after_validation :geocode 
+
+
+  def full_street_address
+    "#{self.street_address}, #{self.city}, #{self.state} #{self.zip}"
+  end
+
 end
+
+# include Geocoder::Model::MongoMapper
