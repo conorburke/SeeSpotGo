@@ -1,6 +1,6 @@
 class Reservation < ApplicationRecord
-  belongs_to :space
   belongs_to :occupant, class_name: :User
+  belongs_to :space
   has_many :ratings
 
   validates :space_id, presence: true

@@ -7,17 +7,17 @@ RSpec.describe Reservation, type: :model do
   let (:reservation) {Reservation.create(space_id: space.id, occupant_id: occupant.id, start_time: '2016-12-25 08:00:00', end_time: '2016-12-25 10:00:00')}
   # pending "add some examples to (or delete) #{__FILE__}"
 
-  describe 'associations' do 
+  describe 'associations' do
     it { should belong_to(:occupant) }
     it { should belong_to(:space) }
   end
 
-  describe 'validations' do 
+  describe 'validations' do
     it { should validate_presence_of(:occupant_id) }
     it { should validate_presence_of(:space_id) }
     it { should validate_presence_of(:start_time) }
     it { should validate_presence_of(:end_time) }
-  end 
+  end
 
   describe 'validations for datetime' do
     it 'ensures start_time is a valid time' do
@@ -26,14 +26,14 @@ RSpec.describe Reservation, type: :model do
       p location.errors
       p space
       p reservation
-      expect(reservation).to be_valid 
+      expect(reservation).to be_valid
     end
 
     it 'ensures end_time is a valid time' do
-      expect(reservation).to be_valid 
+      expect(reservation).to be_valid
     end
 
-    it 'ensure improper time format is invalid' do 
+    it 'ensure improper time format is invalid' do
       reservation2 = Reservation.create(space_id: space.id, occupant_id: occupant.id, start_time: 'tomorrow', end_time: '2016-12-25 10:00:00')
       expect(reservation2).to be_invalid
     end
