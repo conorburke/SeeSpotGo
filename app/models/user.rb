@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   has_many :locations
   has_many :spaces, through: :locations
@@ -8,9 +11,7 @@ class User < ApplicationRecord
   has_many :written_ratings, class_name: :Rating, foreign_key: :rater_id
   has_many :received_ratings, class_name: :Rating
 
-  validates :first_name, :last_name, :email, :password_digest, :phone, presence: true
-  validates :email, uniqueness: { case_sensitive: false }
-
+  validates :first_name, :last_name, :phone, presence: true
   validate :valid_phone
 
   def valid_phone

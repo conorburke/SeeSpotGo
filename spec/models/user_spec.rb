@@ -1,14 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.create(
-      first_name: "Conor",
-      last_name: "Burke",
-      email: "cjburke89@gmail.com",
-      password_digest: "1234",
-      phone: "717-608-8969",
-    )}
-
   describe "associations" do
 
     it { should have_many(:locations) }
@@ -29,7 +21,6 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:last_name) }
     it { should validate_presence_of(:email) }
-    it { should validate_presence_of(:password_digest) }
     it { should validate_presence_of(:phone) }
 
     it { should validate_uniqueness_of(:email).case_insensitive }
