@@ -26,7 +26,7 @@ locations = [{street_address: "5 W 86th St",
   user = User.create(first_name: Faker::Name.first_name,
               last_name: Faker::Name.last_name,
               email: Faker::Internet.email,
-              password_digest: "1234",
+              password: "123456",
               phone: "123-456-7890")
   user.locations.create(locations[n])
 end

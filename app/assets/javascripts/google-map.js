@@ -1,3 +1,6 @@
+var map;
+var markers;
+
 function initMap() {
   // Create map options.
   var mapOptions = {
@@ -17,13 +20,17 @@ function initMap() {
   };
 
   // Create a map object and specify the DOM element for display using defined mapOptions.
-  var map = new google.maps.Map(document.getElementById('search-map'), mapOptions);
+  map = new google.maps.Map(document.getElementById('search-map'), mapOptions);
+}
 
-  // Create Pin.
+function createMarker(latlng) {
   var marker = new google.maps.Marker({
-    position: {lat: 40.7857329, lng: -73.9698574},
-    map: map
+    position: {lat: latlng[0], lng: latlng[1]},
+    map: map,
+    optimized: false
   })
+  marker.addListener('click', function(){ alert('hello')})
+  return marker
 }
 
 function loadScript() {
@@ -33,3 +40,22 @@ function loadScript() {
 }
 
 window.onload = loadScript;
+
+$(document).ready(function() {
+
+  // Click search button to load all locations onto map.
+
+  $("a").on("click", function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: "search/query",
+      method: "GET"
+    }).done(function(msg) {
+      markers = [];
+      for (var i = 0; i < msg.length; i++) {
+        var marker = createMarker(msg[i]);
+        console.log(marker);
+      }
+    })
+  })
+})
