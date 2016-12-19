@@ -17,4 +17,12 @@ class Location < ApplicationRecord
       errors.add :zip, "code is not valid"
     end
   end
+
+  # GeoCoder
+  geocoded_by :full_street_address
+  after_validation :geocode
+
+  def full_street_address
+    "#{self.street_address}, #{self.city}, #{self.state} #{self.zip}"
+  end
 end
