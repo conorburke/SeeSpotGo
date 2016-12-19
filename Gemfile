@@ -26,9 +26,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+# User Paperclip to add pic
 gem "paperclip", "~> 5.0.0"
-
+# Use Bootstrap for Styling
+gem 'bootstrap-sass', '~> 3.3.6'
+# Use DotEnv to store ENV
 gem "dotenv"
 
 # Use Capistrano for deployment
@@ -40,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 gem 'simplecov', :require => false, :group => :test

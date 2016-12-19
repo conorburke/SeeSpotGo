@@ -5,3 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Users
+require 'faker'
+
+3.times do |n|
+  User.create(first_name: Faker::Name.first_name,
+              last_name: Faker::Name.last_name,
+              email: Faker::Internet.email,
+              password_digest: "1234",
+              phone: "123-456-7890")
+end
+
+Locations
+
+User.all.each do |user|
+  user.locations.create(street_address: Faker::Address.street_address,
+                        city: Faker::Address.city,
+                        state: Faker::Address.state_abbr,
+                        zip: Faker::Address.zip)
+end
+
+# Spaces
+
+Location.all.each do |location|
+  location.spaces.create(space_active: 1)
+end
