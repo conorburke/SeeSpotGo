@@ -1,7 +1,7 @@
 function initMap() {
   // Create map options.
   var mapOptions = {
-    center: {lat: 40.782710, lng: -73.965310},
+    center: {lat: 32.7157, lng: -117.1611},
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     mapTypeControl: false,
     zoom: 13,
