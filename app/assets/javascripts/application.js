@@ -15,3 +15,34 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+//= require cable
+
+$(function () {
+
+  $(".rateYo").rateYo({
+    rating: 0,
+    starWidth: "20px",
+    ratedFill: "#F1C40F",
+    normalFill: "#A0A0A0"
+  });
+
+  $(".rateYo").click(function(e){
+    var reservation_id = $(this).closest(".reservation-card").attr("id");
+    var score = $(this).rateYo("option", "rating");
+
+
+    var data = {reservation_id: reservation_id, score: score};
+
+    var request = $.ajax({
+      method: "POST",
+      url: "/ratings",
+      data: data
+    });
+
+    request.done(function(msg) {
+      console.log(msg)
+    });
+
+  });
+
+});
