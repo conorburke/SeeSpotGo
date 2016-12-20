@@ -1,9 +1,41 @@
 .navbar.navbar-inverse
   .navbar-collapse.collapse.navbar-inverse-collapse
+    %h1.search-header
+      Reserve a Spot
     .ey_nav_div
       = form_tag("/query", method: :get, class: "navbar-form") do
-        = text_field_tag :search, params[:search], placeholder: "city, state, zip, address", class: "form-control"
-        = select_tag :miles, options_for_select([["within 1 mile", "1"], ["within 2 miles", "2"], ["within 5 miles", "5"]]), class: "form-control"
+        .location-container.row
+          .long-label.col-md-12
+            = label_tag "Search for parking around:"
+            <br>
+          .address-container.col-md-8
+            = text_field_tag :search, params[:search], placeholder: "city, state, zip, address", class: "form-control"
+          .range-container.col-md-4
+            = select_tag :miles, options_for_select([["within 1 mile", "1"], ["within 2 miles", "2"], ["within 5 miles", "5"]]), class: "form-control"
+          <br>
+        = label_tag "Size of Vehicle:"
+        = link_to "help"
+        <br>
         = select_tag :size, options_for_select([["motorcycle", "motorcycle"], ["compact", "compact"], ["standard", "standard"], ["large", "large"], ["RV", "RV"]]), class: "form-control"
-
-        = submit_tag "Find Parking", name: nil, :class => "btn btn-info"
+        <br>
+        .price-container.row
+          .long-label.col-md-12
+            = label_tag "Price Range ($ per hour) :"
+            <br>
+          .price-constrain-container.col-md-4
+            = select_tag :constrain, options_for_select([["Any", ""], ["Less than", "less_than"]]), class: "form-control"
+          .price-number-container.col-md-8
+            = number_field_tag :price
+            <br>
+        .time-container.row
+          .start-time-container.col-md-6
+            = label_tag "Start Time:"
+            <br>
+            = datetime_field_tag params[:start_time]
+            <br>
+          .end-time-container.col-md-6
+            = label_tag "End Time:"
+            <br>
+            = datetime_field_tag params[:end_time]
+            <br>
+        = submit_tag "Find Parking", name: nil, :class => "btn btn-info search-submit"
