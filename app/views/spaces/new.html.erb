@@ -1,0 +1,9 @@
+
+  <h2>Register Your Parking Spot</h2>
+  <%= render template: "spaces/_form" %>
+
+  <h4> Registered Parking Spots: </h4>
+  <% @location.spaces.each do |space| %>
+    <%= render template: "spaces/_show", locals: {space: space} %>
+  <% end %>
+
