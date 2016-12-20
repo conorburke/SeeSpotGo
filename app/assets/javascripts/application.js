@@ -15,3 +15,19 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+$(function () {
+
+  $("#rateYo").rateYo({
+    rating: 0,
+    starWidth: "20px",
+    ratedFill: "#F1C40F",
+    normalFill: "#A0A0A0"
+  });
+
+
+  $("#rateYo").click(function(e){
+    var rating = $("#rateYo").rateYo("option", "rating");
+  });
+
+});
