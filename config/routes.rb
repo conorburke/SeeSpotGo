@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   get '/search/query', to: 'search#query'
 
+  get '/users/:id', to: 'users#show'
+
 end
