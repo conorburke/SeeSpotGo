@@ -1,19 +1,26 @@
 body {
-  padding:10px;
+  padding: 0px 10px;
 }
 
 nav {
+  z-index:99;
   padding-left:10px;
   position:absolute;
-  top:10px;
+  /*top:10px;*/
+  top:0;
   right:0;
   width:100%;
   text-align:right;
+  background:white;
+  -webkit-box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.75);
+box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.75);
 }
 
 .left-align {
   text-align: left;
-  font-size: 200%;
+  font-size: 220%;
+  font-family: 'Varela Round', sans-serif;
 }
 
 nav ul {
@@ -26,11 +33,28 @@ nav li {
   list-style-type:none;
   display:inline;
   padding: 8px 15px 8px 15px;
-  border-right: 2px solid black;
+  border-right: 2px solid lightgray;
 }
 
 nav li:last-child{
   border:none;
+}
+
+.landing-container {
+  position:relative;
+  top:-20px;
+  background-image: url("http://1.bp.blogspot.com/-3h5zMf5xi-w/UfsyeLeLz7I/AAAAAAAABt8/TpMuMHgj3ts/s1600/watercolor_lQZ_DMeBuNU.jpeg");
+  max-width:900px;
+  height:400px;
+  margin:auto;
+}
+
+.landing-container h2 {
+  font-size:400%;
+}
+
+.page-container {
+  margin-top:60px;
 }
 
 .block-container {
@@ -40,27 +64,54 @@ nav li:last-child{
 }
 
 .row-container {
+  max-width:700px;
+  margin:auto;
+  /*background:lightgray;*/
+  height:200px;
+}
+
+.homepage-card {
+  margin:auto;
+  background:white;
+}
+
+.reservation-card {
   width:100%;
+  background:lightgray;
+  padding:10px;
+  border-radius:10px;
 }
 
 .card {
-  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  text-align:center;
   padding:0;
   width: 200px;
   min-height:200px;
-  border: 3px solid lightgray;
-  border-radius: 5px;
+  /*border: 3px solid lightgray;*/
+  border-radius: 10px;
+}
+
+.card-items {
+  /*max-width:50%;*/
+
 }
 
 i.material-icons {
-  font-size:500%;
-  display:block;
-
+  font-size:900%;
+  color:#6A8D92;
 }
 
 .side-container {
-  width:30%;
+  width:33%;
   float:left;
+}
+
+.right-container {
+  float:left;
+  /*margin-left:40px;*/
 }
 
 .space-desc {
@@ -71,11 +122,12 @@ footer {
   clear:both;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
   .block-container  {
     width: 50%;
     float: left;
   }
+
   .card {
     width:100%;
     float:left;
@@ -86,6 +138,9 @@ footer {
   .block-container  {
     width: 100%;
     float: none;
+  }
+  .side-container {
+    width:100%;
   }
   .card {
     width:100%;

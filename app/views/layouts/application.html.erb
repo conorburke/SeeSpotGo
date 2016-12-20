@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag    'styles', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Varela+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <!--     <script src="../../assets/javascripts/google-map.js"></script> -->
@@ -18,15 +19,15 @@
     <nav>
       <div class="left-align">
         <div id='logo'></div>
-        <a href = "/" style="text-decoration: none; color:#4eb74b">SeeSpotGo</a>
+        <%= link_to "SeeSpotGo", root_url, style: "text-decoration: none; color: #4eb74b" %>
       </div>
       <ul>
         <% if !user_signed_in? %>
           <li>
-            <a href='/users/sign_in'>Login</a>
+            <%= link_to "Login", new_user_session_url %>
           </li>
           <li>
-            <a href='/users/sign_up'>Register</a>
+            <%= link_to "Register", new_user_registration_url %>
           </li>
         <% else %>
           <li>
@@ -38,9 +39,12 @@
         <% end %>
       </ul>
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+    <div class="page-container">
+    <!-- <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
+      <%= yield %>
+    </div>
     <footer>footer goes here</footer>
   </body>
 </html>
