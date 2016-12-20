@@ -1,0 +1,28 @@
+
+  <h2>List Your Parking Spot</h2>
+  <%= form_for [@location, @space] do |f| %>
+    <div class="field">
+      <%= f.label :size %><br/>
+      <%= f.text :size, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br/>
+      <%= f.text :description, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :space_active %><br/>
+      <%= f.checkbox :space_active, autofocus: true %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Submit" %>
+    </div>
+  <% end %>
+
+  <h4>Your Registered Parking Spots: </h4>
+  <% @users_spaces.each do |space| %>
+    <%= render template: "spaces/show", locals: {space: space} %>
+  <% end %>
+
