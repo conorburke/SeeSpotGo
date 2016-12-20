@@ -33,7 +33,8 @@ gem "paperclip", "~> 5.0.0"
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use DotEnv to store ENV
 gem "dotenv"
-
+# For Rails console on error pages
+gem "binding_of_caller"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
