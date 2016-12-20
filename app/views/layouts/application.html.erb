@@ -18,19 +18,19 @@
     <nav>
       <div class="left-align">
         <div id='logo'></div>
-        <a href = "/" style="text-decoration: none; color:#4eb74b">SeeSpotGo</a>
+        <%= link_to "SeeSpotGo", root_url, style: "text-decoration: none; color: #4eb74b" %>
       </div>
       <ul>
         <% if !user_signed_in? %>
           <li>
-            <a href='/users/sign_in'>Login</a>
+            <%= link_to "Login", new_user_session_url %>
           </li>
           <li>
-            <a href='/users/sign_up'>Register</a>
+            <%= link_to "Register", new_user_registration_url %>
           </li>
         <% else %>
           <li>
-            <a href="/users/<%=current_user.id%>"><%=current_user.email%></a>
+            <a href="users/<%=current_user.id%>"><%=current_user.email%></a>
           </li>
           <li>
             <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "nav-bar"  %>
@@ -38,9 +38,12 @@
         <% end %>
       </ul>
     </nav>
+
+    <div class="page-container">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+      <%= yield %>
+    </div>
     <footer>footer goes here</footer>
   </body>
 </html>
