@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :written_ratings, class_name: :Rating, foreign_key: :rater_id
   has_many :received_ratings, class_name: :Rating
   has_many :chat_rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   validates :first_name, :last_name, :phone, presence: true
   validate :valid_phone
