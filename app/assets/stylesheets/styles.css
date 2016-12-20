@@ -187,7 +187,7 @@ footer {
 }
 
 li span { 
-  position: relative; left: 35px; 
+  position: relative; left: 18px; 
 }
 
 li span a {
@@ -196,6 +196,16 @@ li span a {
   border-radius: 10px;
   padding: 2px;
   margin: 2px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
 }
 
 

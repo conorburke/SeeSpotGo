@@ -1,5 +1,5 @@
 
-<h1 class="chat-room-header"><%= @chat_room.title %></h1>
+<h2 class="chat-room-header"><%= @chat_room.title %></h2>
 
 <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
   <%= render @chat_room.messages %>
@@ -16,4 +16,9 @@
   </div>
 
   <%= f.submit "Post", class: 'btn btn-success btn-lg' %>
+
+  <p></p>
+
+  <%= link_to 'Home', root_path, class: 'btn btn-success btn-outline btn-sm' %>
+  <%= link_to 'Chat Home', chat_rooms_path, class: 'btn btn-success btn-outline btn-sm' %>
 <% end %>
