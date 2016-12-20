@@ -18,7 +18,7 @@ class Search
       errors << "Location is not valid"
     elsif (price_range != "any") && (!self.price || !(self.price.is_a? Integer) || self.price < "2")
       errors << "Price is not valid"
-    elsif !self.start_time || !self.end_time
+    elsif (!self.start_time || self.start_time.empty?) || (!self.end_time || self.end_time.empty?)
       errors << "Start/End time is not valid"
     else
       begin

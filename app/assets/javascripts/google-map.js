@@ -72,6 +72,9 @@ $(document).ready(function() {
       dataType: "json",
       data: $(this).serialize()
     }).done(function(msg) {
+      // Take off Disabled Function.
+      $('.navbar-form').find('.btn-info').removeAttr('data-disable-with');
+
       // Erase current markers.
       clearMarkers();
 
@@ -91,7 +94,6 @@ $(document).ready(function() {
         }
       }
 
-      $(".navbar-form").find('.btn-info').attr('disabled', false) // Enable multiple search.
       return false
     })
   })
