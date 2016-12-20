@@ -1,7 +1,10 @@
 class ReservationsController < ApplicationController
   def create
-    @space = Space.find(params[:space_id])
-    @space.reservations.create(start_time: params[:start_time], end_time: params[:end_time])
-    redirect_to space_path(@space)
+    @reservation = Reservation.create(reservation_params)
+    redirect_to space_path(@reservation.space_id)
+  end
+
+  def reservation_params
+    params.require(:reservation).permit(:start_time, :end_time, :space_id, :occupant_id)
   end
 end
