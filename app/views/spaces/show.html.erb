@@ -21,6 +21,6 @@
 
   <h4>Your Reservations for this Spot: </h4>
   <% @users_reservations.each do |reservation| %>
-    <%= render template: "reservations/show", locals: {reservation: reservation} %>
+    <%= render template: "reservations/_show", locals: {reservation: reservation} %>
   <% end %>
 </div>
