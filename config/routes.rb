@@ -19,4 +19,6 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'users#show'
 
+  post '/ratings', to: 'ratings#create'
+
 end
