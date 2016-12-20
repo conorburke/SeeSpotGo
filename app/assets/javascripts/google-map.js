@@ -1,4 +1,5 @@
 var map;
+var markers = [];
 
 // Map Creation:
 function initMap() {
@@ -33,11 +34,13 @@ window.onload = loadScript;
 
 // Marker Creation:
 function createMarker(latitude, longitude) {
-  return new google.maps.Marker({
+  var marker = new google.maps.Marker({
     position: {lat: latitude, lng: longitude},
     map: map,
     optimized: false
   })
+  markers.push(marker);
+  return marker;
 }
 
 function attachSecretMessage(marker, secretMessage) {
@@ -52,20 +55,29 @@ function attachSecretMessage(marker, secretMessage) {
 // JQuery:
 $(document).ready(function() {
 
-  // Click search button to load all locations onto map.
-
-  $("a").on("click", function(event) {
+  // Search for locations with spaces available around a location.
+  $(".navbar-form").on("submit", function(event) {
     event.preventDefault();
     $.ajax({
       url: "search/query",
-      method: "GET"
+      method: "GET",
+      dataType: "json",
+      data: $(this).serialize()
     }).done(function(msg) {
+      // Erase current markers.
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+      }
+      markers = [];
+
+      // Add new markers.
       for (var i = 0; i < msg.length; i++) {
         var location = msg[i];
         console.log(location);
         var marker = createMarker(location.latitude, location.longitude);
         attachSecretMessage(marker, location.infobox);
       }
+      $('.btn-info').attr('disabled', false) // Enable multiple search.
     })
   })
 })
