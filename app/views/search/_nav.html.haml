@@ -1,0 +1,29 @@
+.navbar.navbar-inverse
+  .navbar-header
+    %a.navbar-brand{href: "/"} SeeSpotGo
+  .navbar-collapse.collapse.navbar-inverse-collapse
+    %ul.nav.navbar-nav
+      - if current_user
+        %li
+          %a{href: "/spaces/new"} List A Space
+        %li
+          %a{href: "/users/#{current_user.id}"} Your Spaces
+
+    %ul.nav.navbar-nav.navbar-right
+      - if user_signed_in?
+        %li
+          = link_to "Logged in as #{current_user.email}", edit_user_registration_path
+        %li
+          = link_to "Log Out", destroy_user_session_path, method: "delete"
+      - else
+        %li
+          = link_to "Sign Up", new_user_registration_path
+        %li
+          = link_to "Log In", new_user_session_path
+
+    .ey_nav_div
+      = form_tag("/query", method: :get, class: "navbar-form") do
+        = text_field_tag :search, params[:search], placeholder: "city, state, zip, address", class: "form-control"
+        = select_tag :miles, options_for_select([["within 1 mile", "1"], ["within 2 miles", "2"], ["within 5 miles", "5"]]), class: "form-control"
+
+        = submit_tag "Find Parking", name: nil, :class => "btn btn-info"

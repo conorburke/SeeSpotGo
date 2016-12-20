@@ -4,7 +4,11 @@ class SearchController < ApplicationController
 
   def query
     if request.xhr?
-      @locations = Location.all
+      @location = params[:search]
+      @distance = params[:miles]
+      @locations = Location.near(@location, @distance)
+
+      # @locations = Location.all
       @results = @locations.map do |location|
         { latitude: location.latitude,
           longitude: location.longitude,
