@@ -15,7 +15,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.search-container, .map-container, #search-bar {
+  height: 100vh;
+}
+
+.navbar.navbar-inverse {
+  width: 100%;
+  height: 100%;
+}
+
 #search-map {
   width: 100%;
-  height: 700px;
+  height: 100%;
 }
