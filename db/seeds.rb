@@ -9,18 +9,18 @@
 # Users
 require 'faker'
 
-locations = [{street_address: "5 W 86th St",
-              city: "New York",
-              state: "NY",
-              zip: "10024"},
-             {street_address: "1252 Madison Ave",
-              city: "New York",
-              state: "NY",
-              zip: "10128"},
-             {street_address: "45 E 81st St",
-              city: "New York",
-              state: "NY",
-              zip: "10028"}]
+locations = [{street_address: "643 Fifth Ave",
+              city: "San Diego",
+              state: "CA",
+              zip: "92101"},
+             {street_address: "600 Fifth Ave",
+              city: "San Diego",
+              state: "CA",
+              zip: "92101"},
+             {street_address: "770 Fifth Ave",
+              city: "San Diego",
+              state: "CA",
+              zip: "92101"}]
 
 3.times do |n|
   user = User.create(first_name: Faker::Name.first_name,

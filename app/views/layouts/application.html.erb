@@ -5,15 +5,42 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'styles', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<!--     <script src="../../assets/javascripts/google-map.js"></script> -->
+
   </head>
 
   <body>
-    <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="#">Home</a></li>
-      <li role="presentation"><a href="#">Profile</a></li>
-      <li role="presentation"><a href="#">Messages</a></li>
-    </ul>
+    <nav>
+      <div class="left-align">
+        <div id='logo'></div>
+        <a href = "/" style="text-decoration: none; color:#4eb74b">SeeSpotGo</a>
+      </div>
+      <ul>
+        <% if !user_signed_in? %>
+          <li>
+            <a href='/users/sign_in'>Login</a>
+          </li>
+          <li>
+            <a href='/users/sign_up'>Register</a>
+          </li>
+        <% else %>
+          <li>
+            <a href="/users/<%=current_user.id%>"><%=current_user.email%></a>
+          </li>
+          <li>
+            <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "nav-bar"  %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
+    <footer>footer goes here</footer>
   </body>
 </html>

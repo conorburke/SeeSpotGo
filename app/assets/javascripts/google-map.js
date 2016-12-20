@@ -4,10 +4,10 @@ var map;
 function initMap() {
   // Create map options.
   var mapOptions = {
-    center: {lat: 40.782710, lng: -73.965310},
+    center: {lat: 32.7157, lng: -117.1611},
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     mapTypeControl: false,
-    zoom: 13,
+    zoom: 16,
     styles: [ { stylers: [ { hue: "#00ff6f" }, { saturation: -50 } ] },
               {
                 "featureType": "water",
@@ -32,9 +32,9 @@ function loadScript() {
 window.onload = loadScript;
 
 // Marker Creation:
-function createMarker(latlng) {
+function createMarker(latitude, longitude) {
   return new google.maps.Marker({
-    position: {lat: latlng[0], lng: latlng[1]},
+    position: {lat: latitude, lng: longitude},
     map: map,
     optimized: false
   })
@@ -60,10 +60,11 @@ $(document).ready(function() {
       url: "search/query",
       method: "GET"
     }).done(function(msg) {
-      markers = [];
       for (var i = 0; i < msg.length; i++) {
-        var marker = createMarker(msg[i]);
-        attachSecretMessage(marker, "hello");
+        var location = msg[i];
+        console.log(location);
+        var marker = createMarker(location.latitude, location.longitude);
+        attachSecretMessage(marker, location.infobox);
       }
     })
   })
