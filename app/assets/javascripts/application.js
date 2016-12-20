@@ -39,10 +39,6 @@ $(function () {
       data: data
     });
 
-    request.done(function(msg) {
-      console.log(msg)
-    });
-
   });
 
 });
