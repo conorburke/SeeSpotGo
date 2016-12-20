@@ -70,14 +70,21 @@ $(document).ready(function() {
       }
       markers = [];
 
-      // Add new markers.
-      for (var i = 0; i < msg.length; i++) {
-        var location = msg[i];
-        console.log(location);
-        var marker = createMarker(location.latitude, location.longitude);
-        attachSecretMessage(marker, location.infobox);
+      // Check for failure
+      if (msg["fail"]) {
+        $(".ey_nav_div").append(
+        "<div class='alert alert-danger' role='alert'>" +
+        "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" + msg["fail"] + "</div>")
+      } else {
+        // Add new markers.
+        for (var i = 0; i < msg.length; i++) {
+          var location = msg[i];
+          var marker = createMarker(location.latitude, location.longitude);
+          attachSecretMessage(marker, location.infobox);
+        }
       }
-      $('.btn-info').attr('disabled', false) // Enable multiple search.
+    }).always(function() {
+      $(".navbar-form").find('.btn-info').attr('disabled', false) // Enable multiple search.
     })
   })
 })

@@ -4,5 +4,6 @@
       = form_tag("/query", method: :get, class: "navbar-form") do
         = text_field_tag :search, params[:search], placeholder: "city, state, zip, address", class: "form-control"
         = select_tag :miles, options_for_select([["within 1 mile", "1"], ["within 2 miles", "2"], ["within 5 miles", "5"]]), class: "form-control"
+        = select_tag :size, options_for_select([["motorcycle", "motorcycle"], ["compact", "compact"], ["standard", "standard"], ["large", "large"], ["RV", "RV"]]), class: "form-control"
 
         = submit_tag "Find Parking", name: nil, :class => "btn btn-info"
