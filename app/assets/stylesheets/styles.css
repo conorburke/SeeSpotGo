@@ -33,6 +33,10 @@ nav li:last-child{
   border:none;
 }
 
+.page-container {
+  margin-top:50px;
+}
+
 .block-container {
   width:33%;
   margin:auto;
@@ -41,21 +45,35 @@ nav li:last-child{
 
 .row-container {
   width:100%;
+  /*background:lightgray;*/
+  height:200px;
+}
+
+.homepage-card {
+  margin:auto;
+  background:white;
 }
 
 .card {
-  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  text-align:center;
   padding:0;
   width: 200px;
   min-height:200px;
   border: 3px solid lightgray;
-  border-radius: 5px;
+  border-radius: 10px;
+}
+
+.card-items {
+  /*max-width:50%;*/
+
 }
 
 i.material-icons {
-  font-size:500%;
-  display:block;
-
+  font-size:900%;
+  color:#6A8D92;
 }
 
 .side-container {
