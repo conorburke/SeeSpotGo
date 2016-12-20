@@ -1,4 +1,4 @@
-<div class="reservation-card">
+<div class="reservation-card" id=<%= reservation.id %>>
   <table>
     <tr>
       <td>Start:</td>
@@ -9,5 +9,9 @@
       <td><%= reservation.end_time%></td>
     </tr>
   </table>
-  <div id="rateYo"></div>
+  <% if reservation.occupant_id == current_user.id %>
+    <% if reservation.ratings.length < 1 %>
+      <div class="rateYo"></div>
+    <% end %>
+  <% end %>
 </div>
