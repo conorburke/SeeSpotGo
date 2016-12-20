@@ -3,17 +3,17 @@
   <%= form_for [@location, @space] do |f| %>
     <div class="field">
       <%= f.label :size %><br/>
-      <%= f.text :size, autofocus: true %>
+      <%= f.text_field :size, autofocus: true %>
     </div>
 
     <div class="field">
       <%= f.label :description %><br/>
-      <%= f.text :description, autofocus: true %>
+      <%= f.text_area :description, autofocus: true %>
     </div>
 
     <div class="field">
       <%= f.label :space_active %><br/>
-      <%= f.checkbox :space_active, autofocus: true %>
+      <%= f.check_box :space_active, autofocus: true %>
     </div>
 
     <div class="actions">
@@ -21,8 +21,8 @@
     </div>
   <% end %>
 
-  <h4>Your Registered Parking Spots: </h4>
-  <% @users_spaces.each do |space| %>
-    <%= render template: "spaces/show", locals: {space: space} %>
+  <h4> Registered Parking Spots: </h4>
+  <% @location.spaces.each do |space| %>
+    <%= render template: "spaces/_show", locals: {space: space} %>
   <% end %>
 

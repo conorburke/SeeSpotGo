@@ -7,12 +7,17 @@ class SpacesController < ApplicationController
   end
 
   def new
-    @location =
+    @location = Location.find_by_id(params[:location_id])
     @space = Space.new()
   end
 
   def create
-    @location =
-    @space = Space.new()
+    @space = Space.create(space_params)
+    redirect_to locations_path(@space.location_id)
   end
+
+  def space_params
+    params.require(:space).permit(:size, :description, :space_active).merge(location_id: params[:location_id])
+  end
+
 end
