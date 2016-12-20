@@ -54,6 +54,13 @@ nav li:last-child{
   background:white;
 }
 
+.reservation-card {
+  width:100%;
+  background:lightgray;
+  padding:10px;
+  border-radius:10px;
+}
+
 .card {
   display:flex;
   align-items:center;
@@ -77,8 +84,13 @@ i.material-icons {
 }
 
 .side-container {
-  width:30%;
+  width:33%;
   float:left;
+}
+
+.right-container {
+  float:left;
+  /*margin-left:40px;*/
 }
 
 .space-desc {
@@ -89,11 +101,12 @@ footer {
   clear:both;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
   .block-container  {
     width: 50%;
     float: left;
   }
+
   .card {
     width:100%;
     float:left;
@@ -104,6 +117,9 @@ footer {
   .block-container  {
     width: 100%;
     float: none;
+  }
+  .side-container {
+    width:100%;
   }
   .card {
     width:100%;
