@@ -57,6 +57,13 @@ function attachSecretMessage(marker, secretMessage) {
   })
 }
 
+function clearMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = [];
+}
+
 // JQuery:
 $(document).ready(function() {
 
@@ -65,26 +72,36 @@ $(document).ready(function() {
   // Search for locations with spaces available around a location.
   $(".navbar-form").on("submit", function(event) {
     event.preventDefault();
+
     $.ajax({
       url: "search/query",
       method: "GET",
       dataType: "json",
       data: $(this).serialize()
     }).done(function(msg) {
-      // Erase current markers.
-      for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-      }
-      markers = [];
+      // Take off Disabled Function.
+      $('.navbar-form').find('.btn-info').removeAttr('data-disable-with');
 
-      // Add new markers.
-      for (var i = 0; i < msg.length; i++) {
-        var location = msg[i];
-        console.log(location);
-        var marker = createMarker(location.latitude, location.longitude);
-        attachSecretMessage(marker, location.infobox);
+      // Erase current markers.
+      clearMarkers();
+
+      // Hide Error Message.
+      $("div.alert").addClass("hidden");
+
+      // Check for failure
+      if (msg["fail"]) {
+        $(".error-message").text(msg["fail"]);
+        $("div.alert").removeClass("hidden");
+      } else {
+        // Add new markers.
+        for (var i = 0; i < msg.length; i++) {
+          var location = msg[i];
+          var marker = createMarker(location.latitude, location.longitude);
+          attachSecretMessage(marker, location.infobox);
+        }
       }
-      $('.btn-info').attr('disabled', false) // Enable multiple search.
+
+      return false
     })
   })
 })
