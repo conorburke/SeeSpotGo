@@ -72,9 +72,7 @@ $(document).ready(function() {
 
       // Check for failure
       if (msg["fail"]) {
-        $(".ey_nav_div").append(
-        "<div class='alert alert-danger' role='alert'>" +
-        "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" + msg["fail"] + "</div>")
+        $(".ey_nav_div").append()
       } else {
         // Add new markers.
         for (var i = 0; i < msg.length; i++) {

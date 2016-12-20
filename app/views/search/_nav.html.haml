@@ -16,7 +16,7 @@
         = label_tag "Size of Vehicle:"
         = link_to "help"
         <br>
-        = select_tag :size, options_for_select([["motorcycle", "motorcycle"], ["compact", "compact"], ["standard", "standard"], ["large", "large"], ["RV", "RV"]]), class: "form-control"
+        = select_tag :size, options_for_select([["motorcycle", "motorcycle"], ["compact", "compact"], ["standard", "standard"], ["large", "large"], ["RV", "RV"]], "standard"), class: "form-control"
         <br>
         .price-container.row
           .long-label.col-md-12
@@ -38,4 +38,7 @@
             <br>
             = datetime_field_tag params[:end_time]
             <br>
+        .alert.alert-danger.col-md-12.hidden
+          %span.glyphicon.glyphicon-exclamation-sign
+          %span.error-message
         = submit_tag "Find Parking", name: nil, :class => "btn btn-info search-submit"
