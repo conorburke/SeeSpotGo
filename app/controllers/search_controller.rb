@@ -24,11 +24,13 @@ class SearchController < ApplicationController
   private
 
   def search_map(locations)
-    @locations = locations
-    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
-      marker.lat location.latitude
-      marker.lng location.longitude
-      marker.infowindow "<a herf='/locations/"+"#{location.id}"+"'>#{location.street_address}, #{location.city}, #{location.state}, #{location.zip}</a>"
+    if request.xhr?
+        @locations = locations.pluck(:latitude, :longitude)
+        render :json => @locations
+    # @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+    #   marker.lat location.latitude
+    #   marker.lng location.longitude
+    #   marker.infowindow "<a herf='/locations/"+"#{location.id}"+"'>#{location.street_address}, #{location.city}, #{location.state}, #{location.zip}</a>"
       # marker.json({ id: location.id})
     end
   end
