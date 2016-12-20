@@ -158,3 +158,44 @@ footer {
 .card {
   max-height: 100px;
 }
+
+.chat-room-container {
+  height: 300px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+
+}
+
+.chat-room-info {
+  text-align: center;
+  border: 1px solid #4eb74b;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.chat-room-info  ul {
+  list-style: none;
+  text-align: left;
+}
+
+.chat-room-header {
+  color: #4eb74b;
+}
+
+li span { 
+  position: relative; left: 35px; 
+}
+
+li span a {
+  display: inline-block;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 2px;
+  margin: 2px;
+}
+
+
