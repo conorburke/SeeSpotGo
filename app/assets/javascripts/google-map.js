@@ -21,7 +21,12 @@ function initMap() {
   };
 
   // Create a map object and specify the DOM element for display using defined mapOptions.
-  map = new google.maps.Map(document.getElementById('search-map'), mapOptions);
+  if ($('#search-map').length) { map = new google.maps.Map(document.getElementById('search-map'), mapOptions) }
+  if ($('#location-map').length) {
+    map = new google.maps.Map(document.getElementById('location-map'), mapOptions)
+    marker = createMarker($('#location').data('latitude'), $('#location').data('longitude'))
+    map.setCenter(marker.getPosition())
+  }
 }
 
 function loadScript() {
@@ -61,6 +66,8 @@ function clearMarkers() {
 
 // JQuery:
 $(document).ready(function() {
+
+  // createMarker($('#location').data('latitude'), $('#location').data('longitude'))
 
   // Search for locations with spaces available around a location.
   $(".navbar-form").on("submit", function(event) {

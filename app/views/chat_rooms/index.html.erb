@@ -1,0 +1,14 @@
+<div class="chat-room-container">
+ <div class="chat-room-info">
+    <h2 class="chat-room-header">Chat Rooms</h2>
+
+    <p class="lead"><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-success' %></p>
+
+    <ul>
+      <%= render @chat_rooms %>
+    </ul>
+
+  </div>
+</div>
+
+ <%= link_to 'Home', root_path, class: 'btn btn-success btn-outline btn-sm' %>

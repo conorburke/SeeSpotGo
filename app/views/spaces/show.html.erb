@@ -1,50 +1,8 @@
-<div class="side-container">
-  <div class="card">
-  <i class="material-icons">&#xE531;</i>
-  </div>
-
-  <ul class="space-desc">
-    <li>
-      <%= @location.street_address %>
-    </li>
-    <li>
-      <%= @location.city %>
-    </li>
-    <li>
-      <%= @location.state %>
-    </li>
-    <li>
-      <%= @location.zip %>
-    </li>
-
-    <li>
-      <%= @space.size %>
-    </li>
-    <li>
-      <%= @space.description %>
-    </li>
-  </ul>
-</div>
-
+<%= render template: "spaces/_show" %>
 
 <div class="right-container">
   <h2>Reserve this Spot</h2>
-  <%= form_for [@space, @reservation] do |f| %>
-
-    <div class="field">
-      <%= f.label :start_time %><br />
-      <%= f.datetime_local_field :start_time, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :end_time %><br />
-      <%= f.datetime_local_field :end_time, autofocus: true %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Submit" %>
-    </div>
-  <% end %>
+  <%= render template: "reservations/_form" %>
 
   <h4>Your Reservations for this Spot: </h4>
   <% @users_reservations.each do |reservation| %>

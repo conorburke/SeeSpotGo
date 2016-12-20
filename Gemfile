@@ -69,3 +69,4 @@ end
 gem "geocoder"
 gem "gmaps4rails"
 gem "haml"
+gem 'redis', '~> 3.2'
