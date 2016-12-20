@@ -1,7 +1,5 @@
 class RatingsController < ApplicationController
   def create
-    puts "askdfjhaskdfjhaskdjfh"
-    p params
     @reservation = Reservation.find_by_id(params[:reservation_id])
     @rater_id = @reservation.occupant_id
     @user_id = @reservation.space.location.user_id
