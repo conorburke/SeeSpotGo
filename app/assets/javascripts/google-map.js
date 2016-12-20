@@ -21,7 +21,10 @@ function initMap() {
   };
 
   // Create a map object and specify the DOM element for display using defined mapOptions.
-  map = new google.maps.Map(document.getElementById('search-map'), mapOptions);
+  if ($('#search-map').length) { map = new google.maps.Map(document.getElementById('search-map'), mapOptions) }
+  if ($('#location-map').length) {
+    map = new google.maps.Map(document.getElementById('location-map'), mapOptions)
+  }
 }
 
 function loadScript() {
