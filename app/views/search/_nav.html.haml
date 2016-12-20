@@ -23,20 +23,20 @@
             = label_tag "Price Range ($ per hour) :"
             <br>
           .price-constrain-container.col-md-4
-            = select_tag :constrain, options_for_select([["Any", ""], ["Less than", "less_than"]]), class: "form-control"
+            = select_tag :constrain, options_for_select([["Any", "any"], ["Less than", "less_than"]]), class: "form-control"
           .price-number-container.col-md-8
-            = number_field_tag :price
+            = number_field_tag :price, 2
             <br>
         .time-container.row
           .start-time-container.col-md-6
             = label_tag "Start Time:"
             <br>
-            = datetime_field_tag params[:start_time]
+            = datetime_field_tag :start_time
             <br>
           .end-time-container.col-md-6
             = label_tag "End Time:"
             <br>
-            = datetime_field_tag params[:end_time]
+            = datetime_field_tag :end_time
             <br>
         .alert.alert-danger.col-md-12.hidden
           %span.glyphicon.glyphicon-exclamation-sign

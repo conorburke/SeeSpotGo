@@ -52,12 +52,20 @@ function attachSecretMessage(marker, secretMessage) {
   })
 }
 
+function clearMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = [];
+}
+
 // JQuery:
 $(document).ready(function() {
 
   // Search for locations with spaces available around a location.
   $(".navbar-form").on("submit", function(event) {
     event.preventDefault();
+
     $.ajax({
       url: "search/query",
       method: "GET",
@@ -65,14 +73,15 @@ $(document).ready(function() {
       data: $(this).serialize()
     }).done(function(msg) {
       // Erase current markers.
-      for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-      }
-      markers = [];
+      clearMarkers();
+
+      // Hide Error Message.
+      $("div.alert").addClass("hidden");
 
       // Check for failure
       if (msg["fail"]) {
-        $(".ey_nav_div").append()
+        $(".error-message").text(msg["fail"]);
+        $("div.alert").removeClass("hidden");
       } else {
         // Add new markers.
         for (var i = 0; i < msg.length; i++) {
@@ -81,8 +90,9 @@ $(document).ready(function() {
           attachSecretMessage(marker, location.infobox);
         }
       }
-    }).always(function() {
+
       $(".navbar-form").find('.btn-info').attr('disabled', false) // Enable multiple search.
+      return false
     })
   })
 })
