@@ -1,0 +1,12 @@
+<div class="infobox">
+  <% spaces = location.active_spaces %>
+  <span><strong>Address: </strong><%= location.full_street_address %></span><br>
+  <span><strong>Spaces Available: </strong><%= spaces.count %></span><br>
+  <% unless spaces.empty? %>
+    <ol>
+      <% spaces.each do |space| %>
+        <li><strong>Size: </strong><%= space.size %></li>
+      <% end %>
+    </ol>
+  <% end %>
+</div>
