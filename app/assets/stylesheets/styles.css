@@ -141,3 +141,7 @@ footer {
     margin: 0.5rem;
   }
 }
+
+.card {
+  max-height: 100px;
+}
