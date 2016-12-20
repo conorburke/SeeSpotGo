@@ -8,6 +8,8 @@ RSpec.describe User, type: :model do
     it { should have_many(:requested_reservations).class_name('Reservation').with_foreign_key(:occupant_id) }
     it { should have_many(:written_ratings).class_name('Rating').with_foreign_key(:rater_id) }
     it { should have_many(:received_ratings).class_name('Rating') }
+    it { should have_many(:messages) }
+    it { should have_many(:chat_rooms)}
   end
 
   describe "validations" do
