@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: [:new, :create, :show, :index]
   mount ActionCable.server => '/cable'
 
-  resources :spaces do
-    resources 'reservations', only: [:create]
+  resources :locations do
+    resources :spaces, only: [:new, :create]
   end
+
+  resources :spaces, except: [:new, :create] do
+    resources :reservations, only: [:new, :create]
+  end
+
   root to: "home#index"
 
   get "search", to: 'search#index'
