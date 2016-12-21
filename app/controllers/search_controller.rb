@@ -24,6 +24,14 @@ class SearchController < ApplicationController
     end
   end
 
+  def view
+    if params[:view] == "list"
+      render :json => { :view => (render_to_string("search/_list", layout: false)) }
+    else
+      render :json => { :view => (render_to_string("search/_map", layout: false)) }
+    end
+  end
+
   private
 
   def search_params
