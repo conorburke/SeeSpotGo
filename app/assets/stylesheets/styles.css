@@ -109,14 +109,25 @@ button.find-parking {
 }
 
 .homepage-card {
-  margin:auto;\
+  margin:auto;
 }
 
 .reservation-card {
-  width:100%;
+  width:250px;
   background:lightgray;
   padding:10px;
-  border-radius:10px;
+  border-radius:5px;
+  border-bottom:2px solid green;
+  margin-bottom:10px;
+}
+
+.reservation-card a {
+  text-decoration: none;
+  color:black;
+}
+
+.reservation-card th {
+  padding-right:10px;
 }
 
 .card {
@@ -158,6 +169,11 @@ i.material-icons {
   min-height:600px;
   float:left;
   margin-right:30px;
+}
+
+.profile-image-container {
+  padding-top:20px;
+  width:170px;
 }
 
 .location-desc {
