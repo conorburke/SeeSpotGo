@@ -1,4 +1,14 @@
-<h2>User Profile for <%= current_user.first_name %> <%= current_user.last_name %></h2>
+<div class="left-container profile-image-container">
+
+  <i class="material-icons">&#xE7FD;</i>
+
+  <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
+  <p>
+  <%= current_user.phone %>
+  <%= current_user.email %>
+  </p>
+</div>
+<div class="right-container">
 <h3>Requested Reservations</h3>
 <% current_user.requested_reservations.each do |reservation| %>
   <%= render template: "reservations/_show", locals: {reservation: reservation} %>
@@ -7,3 +17,9 @@
 <% current_user.received_reservations.each do |reservation| %>
   <%= render template: "reservations/_show", locals: {reservation: reservation} %>
 <% end %>
+
+<h3>Spaces Owned</h3>
+<% current_user.spaces.each do |space| %>
+  <%= render template: "spaces/_show", locals: {space: space} %>
+<% end %>
+</div>

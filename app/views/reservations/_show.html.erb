@@ -1,17 +1,31 @@
+
 <div class="reservation-card" id=<%= reservation.id %>>
-  <table>
-    <tr>
-      <td>Start:</td>
-      <td><%= reservation.start_time%></td>
-    </tr>
-    <tr>
-      <td>End:</td>
-      <td><%= reservation.end_time%></td>
-    </tr>
-  </table>
+  <a href="/locations/<%= reservation.space.location.id %>">
+    <table>
+      <tr>
+        <th>Location:</th>
+        <td><%= reservation.space.location.street_address %></td>
+      </tr>
+      <tr>
+        <th>Starts:</th>
+        <td>
+          <%= reservation.start_time.strftime("%D")%>
+          <%= reservation.start_time.strftime("%r")%>
+        </td>
+      </tr>
+      <tr>
+        <th>Ends:</th>
+        <td>
+          <%= reservation.end_time.strftime("%D")%>
+          <%= reservation.end_time.strftime("%r")%>
+        </td>
+      </tr>
+    </table>
+  </a>
   <% if reservation.occupant_id == current_user.id %>
     <% if reservation.ratings.length < 1 %>
-      <div class="rateYo"></div>
+      <div style="margin:auto" class="rateYo"></div>
     <% end %>
   <% end %>
 </div>
+
