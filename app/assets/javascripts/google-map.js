@@ -1,7 +1,7 @@
 // Map & Markers tracker.
 var map;
 var markers = [];
-
+var view = "map"; 
 // Map Creation:
 function initMap() {
   // Create map options.
@@ -70,11 +70,33 @@ function clearMarkers() {
 
 // Render when linked-to the page.
 $(document).on("turbolinks:load", function() {
-  loadScript(); // Render Map.
-  $('input[type=checkbox][data-toggle^=toggle]').bootstrapToggle() // Render Toggle.
-})
+  // Render Map.
+  loadScript();
 
-$(document).ready(function() {
+  // Render Toggle.
+  $('input[type=checkbox][data-toggle^=toggle]').bootstrapToggle();
+
+  // Login.
+    $('form#new_user').on("submit", function(e){
+      event.preventDefault();
+      $.ajax({
+        url: $(this).attr("action"),
+        method: "POST",
+        data: $(this).serialize()
+      })
+        .done(function(response) {
+          console.log(response)
+          debugger
+        })
+    })
+
+  $('.modaltrigger').on("click", function(event) {
+    $("#loginmodal").css("display", "none");
+    $("#registermodal").css("display", "none");
+  })
+
+  $('.modaltrigger').leanModal({ top: 110, overlay: 0.45, closeButton: ".hidemodal" });
+
   // Switch Map/List View.
   $("input#view-toggle").on("change", function(event) {
     event.preventDefault();
@@ -85,7 +107,8 @@ $(document).ready(function() {
     // Request Specific View from Server.
     if ($(".view-switch-form").find(".toggle").hasClass("btn-primary")) { // Decide which view to request.
       // Request Map View.
-      viewData["view"] = "map";
+      view = "map";
+      viewData["view"] = view;
 
       $.ajax({
         url: "search/view",
@@ -98,7 +121,8 @@ $(document).ready(function() {
       })
     } else {
       // Request list view.
-      viewData["view"] = "list";
+      view = "list";
+      viewData["view"] = view;
 
       $.ajax({
         url: "search/view",
@@ -114,12 +138,14 @@ $(document).ready(function() {
   // Search for locations with spaces available.
   $(".navbar-form").on("submit", function(event) {
     event.preventDefault();
+    var searchData = $(this).serialize();
+    searchData = searchData + "&view=" + view
 
     $.ajax({
       url: "search/query",
       method: "GET",
       dataType: "json",
-      data: $(this).serialize()
+      data: searchData
     }).done(function(msg) {
       clearMarkers(); // Erase current markers.
 
@@ -130,11 +156,15 @@ $(document).ready(function() {
         $(".error-message").text(msg["fail"]);
         $("div.alert").removeClass("hidden");
       } else {
-        // Add new markers.
-        for (var i = 0; i < msg.length; i++) {
-          var location = msg[i];
-          var marker = createMarker(location.latitude, location.longitude);
-          attachSecretMessage(marker, location.infobox);
+        if (view === "map") {
+          // Add new markers.
+          for (var i = 0; i < msg.length; i++) {
+            var location = msg[i];
+            var marker = createMarker(location.latitude, location.longitude);
+            attachSecretMessage(marker, location.infobox);
+          }
+        } else {
+          $(".search-container").find(".map-container").html(msg["view"]);
         }
       }
 

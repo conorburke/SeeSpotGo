@@ -1,30 +1,24 @@
-<div class="side-container">
-  <div class="card">
-  <i class="material-icons">&#xE531;</i>
-  </div>
+<div class="reservation-card" id=<%= space.id %>>
+  <a href="/locations/<%= space.location.id %>">
+    <table>
+      <tr>
+        <th>Location:</th>
+        <td><%= space.location.street_address %></td>
+      </tr>
+      <tr>
+        <th>Price:</th>
+        <td>
+          $<%= space.price.round %>/hr
+        </td>
+      </tr>
+      <tr>
+        <th>Size:</th>
+        <td>
+          <%= space.size%>
+        </td>
+      </tr>
+    </table>
+  </a>
 
-  <ul class="space-desc">
-    <li>
-      <%= @location.street_address %>
-    </li>
-    <li>
-      <%= @location.city %>
-    </li>
-    <li>
-      <%= @location.state %>
-    </li>
-    <li>
-      <%= @location.zip %>
-    </li>
-
-    <li>
-      <%= @space.size %>
-    </li>
-    <li>
-      <%= @space.description %>
-    </li>
-    <li>
-      Rating: <%= @owner.average_rating %>
-    </li>
-  </ul>
 </div>
+

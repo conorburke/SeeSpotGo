@@ -19,8 +19,14 @@ class Space < ApplicationRecord
   def space_available?(params)
     price = params[:price] || 999
     size = params[:size] || self.size
+    start_time = params[:start_time] || Time.zone.now
+    end_time = params[:end_time] || Time.zone.now
 
-    self.active? && self.price <= price && self.size == size
+    self.active? && self.price <= price && self.size == size && self.time_available?(start_time, end_time)
+  end
+
+  def time_available?(start_time, end_time)
+    !(self.reservations.find { |reservation| reservation.overlap?(start_time, end_time) })
   end
 
   def average_rating

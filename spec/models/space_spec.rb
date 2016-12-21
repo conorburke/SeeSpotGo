@@ -16,6 +16,7 @@ RSpec.describe Space, type: :model do
 
   describe 'behaviors' do
     let (:user) {User.create(first_name: "Conor", last_name: "Burke", email: "conor@gmail.com", password: "123456", phone: "123-456-7890")}
+    let (:occupant) {User.create(first_name: "Conor2", last_name: "Burke", email: "conor2@gmail.com", password: "123456", phone: "123-456-7890")}
     let (:location) {Location.create(user_id: user.id, street_address: "707 Broadway Avenue", city: "San Diego", state: "CA", zip: "92101")}
     let (:space) {Space.create(location_id: location.id, price: 2, space_active: 1)}
 
@@ -46,6 +47,11 @@ RSpec.describe Space, type: :model do
 
       it 'returns false if it is different size' do
         expect(space.space_available?({size: "RV"})).to be false
+      end
+
+      it 'returns false if it already has reservation at that time' do
+        reservation = Reservation.create(space_id: space.id, occupant_id: occupant.id, start_time: '2016-12-25 08:00:00', end_time: '2016-12-25 10:00:00')
+        expect(space.space_available?({start_time: Time.zone.parse('2016-12-25 09:00:00'), end_time: Time.zone.parse('2016-12-25 11:00:00')})).to be false
       end
     end
   end

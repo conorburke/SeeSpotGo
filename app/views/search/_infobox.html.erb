@@ -7,7 +7,7 @@
     <ol>
       <% spaces.each do |space| %>
         <% if space.space_available?(space_params) %>
-          <li><strong>Size: </strong><%= space.size %>  <strong>Price: </strong><%= space.price %> <%= link_to "Book" %></li>
+          <li><strong>Size: </strong><%= space.size %>  <strong>Price: </strong><%= space.price %> <%= link_to "Book", location_path(location) %></li>
         <% end %>
       <% end %>
     </ol>
