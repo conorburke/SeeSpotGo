@@ -21,10 +21,10 @@
 </div>
 <% if current_user.id != @location.user_id %>
   <div class="reservation-right">
-    <%= render template: "reservations/_form", locals: { space: space, reservation: @reservation } %>
+    <%= render partial: "reservations/_form", locals: { space: space, reservation: @reservation } %>
   </div>
 <% elsif current_user.id == @location.user_id %>
   <div class="reservation-right">
-    <%= render template: "spaces/_form", locals: { location: @location, space: space } %>
+    <%= render partial: "spaces/_form", locals: { location: @location, space: space } %>
   </div>
 <% end %>
