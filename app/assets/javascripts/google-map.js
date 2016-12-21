@@ -1,7 +1,7 @@
 // Map & Markers tracker.
 var map;
 var markers = [];
-
+var view = "map"; 
 // Map Creation:
 function initMap() {
   // Create map options.
@@ -85,7 +85,8 @@ $(document).ready(function() {
     // Request Specific View from Server.
     if ($(".view-switch-form").find(".toggle").hasClass("btn-primary")) { // Decide which view to request.
       // Request Map View.
-      viewData["view"] = "map";
+      view = "map";
+      viewData["view"] = view;
 
       $.ajax({
         url: "search/view",
@@ -98,7 +99,8 @@ $(document).ready(function() {
       })
     } else {
       // Request list view.
-      viewData["view"] = "list";
+      view = "list";
+      viewData["view"] = view;
 
       $.ajax({
         url: "search/view",
@@ -114,12 +116,14 @@ $(document).ready(function() {
   // Search for locations with spaces available.
   $(".navbar-form").on("submit", function(event) {
     event.preventDefault();
+    var searchData = $(this).serialize();
+    searchData = searchData + "&view=" + view
 
     $.ajax({
       url: "search/query",
       method: "GET",
       dataType: "json",
-      data: $(this).serialize()
+      data: searchData
     }).done(function(msg) {
       clearMarkers(); // Erase current markers.
 
@@ -130,11 +134,15 @@ $(document).ready(function() {
         $(".error-message").text(msg["fail"]);
         $("div.alert").removeClass("hidden");
       } else {
-        // Add new markers.
-        for (var i = 0; i < msg.length; i++) {
-          var location = msg[i];
-          var marker = createMarker(location.latitude, location.longitude);
-          attachSecretMessage(marker, location.infobox);
+        if (view === "map") {
+          // Add new markers.
+          for (var i = 0; i < msg.length; i++) {
+            var location = msg[i];
+            var marker = createMarker(location.latitude, location.longitude);
+            attachSecretMessage(marker, location.infobox);
+          }
+        } else {
+          $(".search-container").find(".map-container").html(msg["view"]);
         }
       }
 
