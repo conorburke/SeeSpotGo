@@ -11,12 +11,13 @@ class SearchController < ApplicationController
 
     # Search all locations within rage.
     @locations = search.search_locations
+    @space_params = search.space_params
 
     unless @locations.empty?
       @results = @locations.map do |location|
         { latitude: location.latitude,
           longitude: location.longitude,
-          infobox: (render_to_string("search/_infobox", layout: false, locals: {location: location})) }
+          infobox: (render_to_string("search/_infobox", layout: false, locals: {location: location, space_params: @space_params})) }
       end
       render :json => @results
     else

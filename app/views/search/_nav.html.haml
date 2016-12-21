@@ -9,7 +9,7 @@
           %input{"id" => "view-toggle", "type" => "checkbox", "checked" => "true", "data-toggle" => "toggle", "data-on" => "Map View", "data-off" => "List View"}
           %input.hidden{"type" => "submit"}
     .ey_nav_div
-      = form_tag("/query", method: :get, class: "navbar-form") do
+      = form_tag("search/query", method: :get, class: "navbar-form") do
         .location-container.row
           .long-label.col-md-12
             = label_tag "Search for parking around:"
