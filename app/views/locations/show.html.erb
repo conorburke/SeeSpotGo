@@ -15,8 +15,6 @@
     </p>
     <h3>Average Rating</h3>
     <p>
-    <!-- <div class="rating-static"></div> -->
-      <!-- <span class="rating-static rating-<%= @user.average_rating * 10 %>"></span> -->
       <div class="rating-container">
         <div class="rating" style="display:none;"><%= @user.average_rating * 20 %></div>
         <div class="star-ratings">
@@ -41,10 +39,10 @@
           <%= image_tag("compact.png") %>
         <% elsif space.size == "large" %>
           <%= image_tag("large.png") %>
-        <% elsif space.size == "rv" %>
+        <% elsif space.size == "RV" %>
           <%= image_tag("rv.png") %>
         <% else %>
-          <%= image_tag("motorcycle.png") %>
+          <%= image_tag("moto.png") %>
         <% end %>
 
           <p class="space-size">
