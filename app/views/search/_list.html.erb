@@ -1,1 +1,24 @@
-<div>List View</div>
+<div class="list-partial-container">
+  <div class="list-group">
+    <h2> Available Spaces </h2>
+    <% locations.each do |location| %>
+      <h4> Address: <%= location.full_street_address %></h4>
+      <% spaces = location.spaces %>
+      <% spaces.each do |space| %>
+        <% if space.space_available?(space_params) %>
+          <li class="list-group-item list-group-item-action list-group-item-success list-items-partial">
+            <div class="row ">
+              <div class="col-md-8 space-description">
+                <span>Size: <%= space.size %></span>
+                <span>Description: <%= space.description %></span>
+              </div>
+              <div class="col-md-4 button-partial-container">
+                <%= link_to "Book!", location_path(location), class: "btn btn-default btn-list-partial" %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
