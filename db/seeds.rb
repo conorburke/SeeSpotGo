@@ -31,6 +31,11 @@ locations = [{street_address: "643 Fifth Ave",
   user.locations.create(locations[n])
 end
 
+Location.create({street_address: "644 Fifth Ave",
+                city: "San Diego",
+                state: "CA",
+                zip: "92101",
+                user_id: 4})
 # Locations
 
 # User.all.each do |user|
@@ -43,5 +48,9 @@ end
 # Spaces
 
 Location.all.each do |location|
+  location.spaces.create(space_active: 1, price: 3, size: 'large')
   location.spaces.create(space_active: 1, price: 2)
+  location.spaces.create(space_active: 1, price: 5, size: 'RV')
 end
+
+
