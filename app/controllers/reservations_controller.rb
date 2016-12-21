@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.create(reservation_params)
-    redirect_to space_path(@reservation.space_id)
+    redirect_to location_path(@reservation.space.location_id)
   end
 
   def reservation_params
