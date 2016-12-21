@@ -268,11 +268,11 @@ li span a {
     color: #5cb85c;
 }
 
-.list-partial-container {
+/*.list-partial-container {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+}*/
 
 .list-group {
   width: 80%;
@@ -303,11 +303,19 @@ li span a {
   float: right;
   color: gray;
   overflow: auto;
-  align-items: center;
+  /*align-items: center;*/
+  display: inline-block;
+  margin-top: 5%;
+  margin-left: 25%;
+  position: absolute;
 }
 
-.btn-partial-container {
-  display: flex;
+.space-description {
+  clear: left;
 }
+
+/*.btn-partial-container {
+  display: flex;
+}*/
 
 

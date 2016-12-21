@@ -10,7 +10,7 @@
       <% spaces.each do |space| %>
         <li class="list-group-item list-group-item-action list-group-item-success list-items-partial">
           <div class="row ">
-            <div class="col-md-8">
+            <div class="col-md-8 space-description">
               <span>Size: <%= space.size %></span>
               <span>Description: <%= space.description %></span>
               <span>Available? <%= space.space_active == 0 ? "No" : "Yes" %></span>
