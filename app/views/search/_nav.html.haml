@@ -9,7 +9,7 @@
           %input{"id" => "view-toggle", "type" => "checkbox", "checked" => "true", "data-toggle" => "toggle", "data-on" => "Map View", "data-off" => "List View"}
           %input.hidden{"type" => "submit"}
     .ey_nav_div
-      = form_tag("/query", method: :get, class: "navbar-form") do
+      = form_tag("search/query", method: :get, class: "navbar-form") do
         .location-container.row
           .long-label.col-md-12
             = label_tag "Search for parking around:"
@@ -29,7 +29,7 @@
             = label_tag "Price Range ($ per hour) :"
             <br>
           .price-constrain-container.col-md-4
-            = select_tag :constrain, options_for_select([["Any", "any"], ["Less than", "less_than"]]), class: "form-control"
+            = select_tag :constrain, options_for_select([["Any", "any"], ["Less than or Equal to", "less_than_or_equal_to"]]), class: "form-control"
           .price-number-container.col-md-8
             = number_field_tag :price, 2
             <br>

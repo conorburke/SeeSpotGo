@@ -6,7 +6,9 @@
   <% unless spaces.empty? %>
     <ol>
       <% spaces.each do |space| %>
-        <li><strong>Size: </strong><%= space.size %></li>
+        <% if space.space_available?(space_params) %>
+          <li><strong>Size: </strong><%= space.size %>  <strong>Price: </strong><%= space.price %> <%= link_to "Book" %></li>
+        <% end %>
       <% end %>
     </ol>
   <% end %>

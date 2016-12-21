@@ -43,5 +43,5 @@ end
 # Spaces
 
 Location.all.each do |location|
-  location.spaces.create(space_active: 1)
+  location.spaces.create(space_active: 1, price: 2)
 end

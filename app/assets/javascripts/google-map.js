@@ -1,3 +1,4 @@
+// Map & Markers tracker.
 var map;
 var markers = [];
 
@@ -29,6 +30,7 @@ function initMap() {
   }
 }
 
+// Load script onto page.
 function loadScript() {
   var script = document.createElement('script');
   script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDn20ttdtOtCSg02P_oONmvRYSrDCb6N7s&callback=initMap";
@@ -46,6 +48,7 @@ function createMarker(latitude, longitude) {
   return marker;
 }
 
+// InfoBox Creation
 function attachSecretMessage(marker, secretMessage) {
   var infowindow = new google.maps.InfoWindow({
     content: secretMessage
@@ -55,6 +58,7 @@ function attachSecretMessage(marker, secretMessage) {
   })
 }
 
+// Clear All Markers.
 function clearMarkers() {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
@@ -63,8 +67,11 @@ function clearMarkers() {
 }
 
 // JQuery:
+
+// Render when linked-to the page.
 $(document).on("turbolinks:load", function() {
-  loadScript();
+  loadScript(); // Render Map.
+  $('input[type=checkbox][data-toggle^=toggle]').bootstrapToggle() // Render Toggle.
 })
 
 $(document).ready(function() {
@@ -73,11 +80,10 @@ $(document).ready(function() {
     event.preventDefault();
     var viewData = {};
 
-    // Clear Script.
-    $("body").find("script").remove();
+    $("body").find("script").remove(); // Clear Script.
 
-    // Find Requested View.
-    if ($(".view-switch-form").find(".toggle").hasClass("btn-primary")) {
+    // Request Specific View from Server.
+    if ($(".view-switch-form").find(".toggle").hasClass("btn-primary")) { // Decide which view to request.
       // Request Map View.
       viewData["view"] = "map";
 
@@ -87,7 +93,7 @@ $(document).ready(function() {
         dataType: "json",
         data: viewData
       }).done(function(response) {
-        $(".search-container").find(".map-container").html(response["view"]);
+        $(".search-container").find(".map-container").html(response["view"]); // Render map view.
         loadScript();
       })
     } else {
@@ -100,12 +106,12 @@ $(document).ready(function() {
         dataType: "json",
         data: viewData
       }).done(function(response) {
-        $(".search-container").find(".map-container").html(response["view"]);
+        $(".search-container").find(".map-container").html(response["view"]); // Render list view.
       })
     }
   })
 
-  // Search for locations with spaces available around a location.
+  // Search for locations with spaces available.
   $(".navbar-form").on("submit", function(event) {
     event.preventDefault();
 
@@ -115,11 +121,9 @@ $(document).ready(function() {
       dataType: "json",
       data: $(this).serialize()
     }).done(function(msg) {
-      // Erase current markers.
-      clearMarkers();
+      clearMarkers(); // Erase current markers.
 
-      // Hide Error Message.
-      $("div.alert").addClass("hidden");
+      $("div.alert").addClass("hidden"); // Hide Error Message.
 
       // Check for failure
       if (msg["fail"]) {
