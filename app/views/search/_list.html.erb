@@ -3,19 +3,21 @@
     <h2> Available Spaces </h2>
     <% locations.each do |location| %>
       <h4> Address: <%= location.full_street_address %></h4>
-      <% spaces = location.active_spaces %>
+      <% spaces = location.spaces %>
       <% spaces.each do |space| %>
-        <li class="list-group-item list-group-item-action list-group-item-success list-items-partial">
-          <div class="row ">
-            <div class="col-md-8 space-description">
-              <span>Size: <%= space.size %></span>
-              <span>Description: <%= space.description %></span>
+        <% if space.space_available?(space_params) %>
+          <li class="list-group-item list-group-item-action list-group-item-success list-items-partial">
+            <div class="row ">
+              <div class="col-md-8 space-description">
+                <span>Size: <%= space.size %></span>
+                <span>Description: <%= space.description %></span>
+              </div>
+              <div class="col-md-4 button-partial-container">
+                <%= link_to "Book!", location_path(location), class: "btn btn-default btn-list-partial" %>
+              </div>
             </div>
-            <div class="col-md-4 button-partial-container">
-              <%= link_to "Book!", location_path(location), class: "btn btn-default btn-list-partial" %>
-            </div>
-          </div>
-        </li>
+          </li>
+        <% end %>
       <% end %>
     <% end %>
   </div>

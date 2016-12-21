@@ -15,7 +15,7 @@ class SearchController < ApplicationController
 
     unless @locations.empty?
       if params[:view] == "list"
-        render :json => { :view => (render_to_string("search/_list", layout: false, locals: {locations: @locations})) }
+        render :json => { :view => (render_to_string("search/_list", layout: false, locals: {locations: @locations, space_params: @space_params})) }
       else
         @results = @locations.map do |location|
         { latitude: location.latitude,
