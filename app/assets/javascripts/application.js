@@ -19,6 +19,9 @@
 
 $(function () {
 
+  var rating = $(".star-ratings").closest(".rating-container").find(".rating").text()
+  $(".star-ratings-top").width(rating+'%');
+
   $(".rateYo").rateYo({
     rating: 0,
     starWidth: "20px",
