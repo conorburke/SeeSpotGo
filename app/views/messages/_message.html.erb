@@ -1,10 +1,10 @@
 <!-- <div class="card"> -->
-  <div class="card-block">
+  <div class="card-block" style="margin-top: 7px;">
     <div class="row">
-      <div class="col-md-1">
-      </div>
-      <div class="col-md-11">
-        <p class="card-text">
+
+      <div class="col-md-12">
+      <%= gravatar_for message.user %>
+        <p class="card-text" style="display: inline-block; position:absolute; margin-top: 1px; margin-left: 10px;">
           <span class="text-muted"><%= message.user.first_name %> at <%= message.timestamp %> says</span><br>
           <%= message.body %>
         </p>
