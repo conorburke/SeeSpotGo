@@ -1,5 +1,35 @@
-<div id="location-map"></div>
+<div class="location-container">
+<!-- <div id="location-map"></div> -->
 
 <%= hidden_field_tag "location", @location.id, {  :id => "location",
                                                   "data-latitude" => @location.latitude,
                                                   "data-longitude" => @location.longitude } %>
+
+<div class="location-desc">
+  <p>
+    <%= @location.street_address %>
+  </p>
+  <p>
+    <%= @location.city %>,
+    <%= @location.state %>
+    <%= @location.zip %>
+  </p>
+  <p>
+    Average Rating: <%= @user.average_rating %>
+  </p>
+</div>
+
+</div>
+
+<div class="space-container">
+  <% @location.spaces.each do |space| %>
+    <% if space.space_active == 1 %>
+      <div class="space-card">
+
+        <%= space.size %>
+        <%= space.description %>
+
+      </div>
+    <% end %>
+  <% end %>
+</div>

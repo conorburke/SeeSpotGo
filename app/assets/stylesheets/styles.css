@@ -153,6 +153,29 @@ i.material-icons {
   float:left;
 }
 
+.location-container {
+  width:400px;
+  /*min-width:400px;*/
+  /*max-width:400px;*/
+  min-height:600px;
+  background:black;
+  float:left;
+}
+
+.space-container {
+  min-height:600px;
+  min-width:600px;
+  background:black;
+  float:left;
+}
+
+.space-card {
+  width:80%;
+  margin:auto;
+  background:white;
+  height:200px;
+}
+
 footer {
   min-height:20px;
   background:#3a3a3a;
