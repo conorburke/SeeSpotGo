@@ -6,16 +6,16 @@
                                                   "data-longitude" => @location.longitude } %>
 
 <div class="location-desc">
+  <h3>Location</h3>
   <p>
-    <%= @location.street_address %>
-  </p>
-  <p>
+    <%= @location.street_address %><br />
     <%= @location.city %>,
     <%= @location.state %>
     <%= @location.zip %>
   </p>
+  <h3>Average Rating</h3>
   <p>
-    Average Rating: <%= @user.average_rating %>
+    <%= @user.average_rating %>
   </p>
 </div>
 
@@ -25,10 +25,13 @@
   <% @location.spaces.each do |space| %>
     <% if space.space_active == 1 %>
       <div class="space-card">
-
-        <%= space.size %>
-        <%= space.description %>
-
+        <p>
+          <%= space.size %>
+        </p>
+        <% if space.description %>
+          <p><%= space.description %></p>
+        <% end %>
+        <button>Reserve</button>
       </div>
     <% end %>
   <% end %>

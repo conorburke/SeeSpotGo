@@ -154,26 +154,43 @@ i.material-icons {
 }
 
 .location-container {
-  width:400px;
+  width:350px;
   /*min-width:400px;*/
   /*max-width:400px;*/
   min-height:600px;
-  background:black;
   float:left;
 }
 
+.location-desc {
+  margin:auto;
+  margin-top:20px;
+  width:75%;
+  background:lightgray;
+  font-size:130%;
+  padding:10px 30px;
+  border:2px solid gray;
+  border-radius:7px;
+}
+
+.location-desc h3 {
+  text-align:center;
+  padding-bottom:2px;
+  border-bottom:2px solid black;
+}
+
 .space-container {
-  min-height:600px;
+  font-size:130%;
+  height:600px;
   min-width:600px;
-  background:black;
   float:left;
 }
 
 .space-card {
   width:80%;
   margin:auto;
-  background:white;
+  background:gray;
   height:200px;
+
 }
 
 footer {
