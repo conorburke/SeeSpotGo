@@ -1,15 +1,29 @@
-<div class="total-spaces-container">
-  <% locations.each do |location| %>
+<!-- <div class="card">
+  <div class="card-block"> -->
+<div class="list-partial-container">
+  <div class="list-group">
+    <h2> Available Spaces </h2>
 
-    <% spaces = location.active_spaces %>
-    <% spaces.each do |space| %>
-      <div class="space-container">
-        <p>Address: <%= space.location.full_street_address %></p>
-        <p>Size: <%= space.size %></p>
-        <p>Description: <%= space.description %>
-        <p>Available? <%= space.space_active == 0 ? "No" : "Yes" %>
-      </div>
+    <% locations.each do |location| %>
+      <h4> Address: <%= location.full_street_address %></h4>
+      <% spaces = location.active_spaces %>
+      <% spaces.each do |space| %>
+        <li class="list-group-item list-group-item-action list-group-item-success list-items-partial">
+          <div class="row ">
+            <div class="col-md-8">
+              <span>Size: <%= space.size %></span>
+              <span>Description: <%= space.description %></span>
+              <span>Available? <%= space.space_active == 0 ? "No" : "Yes" %></span>
+            </div>
+            <div class="col-md-4 button-partial-container">
+              <button type="button" class="btn btn-default btn-list-partial">Book!</button>
+            </div>
+          </div>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
-
+<!--   </div>
+</div>
+ -->

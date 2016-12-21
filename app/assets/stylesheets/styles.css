@@ -268,4 +268,46 @@ li span a {
     color: #5cb85c;
 }
 
+.list-partial-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-group {
+  width: 80%;
+}
+
+.list-group li {
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.list-items-partial span {
+  color: gray;
+  left: 20px;
+  display: block;
+
+}
+
+.list-group h2 {
+  color: #4eb74b;
+  text-align: center 
+}
+
+.list-group h4 {
+  color: gray;
+}
+
+.btn-list-partial {
+  float: right;
+  color: gray;
+  overflow: auto;
+  align-items: center;
+}
+
+.btn-partial-container {
+  display: flex;
+}
+
 
