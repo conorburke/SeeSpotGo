@@ -1,5 +1,5 @@
 <div class="left-container">
-  <div id="location-map"></div>
+  <!-- <div id="location-map"></div> -->
 
   <%= hidden_field_tag "location", @location.id, {  :id => "location",
                                                     "data-latitude" => @location.latitude,
@@ -16,7 +16,14 @@
     <h3>Average Rating</h3>
     <p>
     <!-- <div class="rating-static"></div> -->
-      <span class="rating-static rating-<%= @user.average_rating * 10 %>"></span>
+      <!-- <span class="rating-static rating-<%= @user.average_rating * 10 %>"></span> -->
+      <div class="rating-container">
+        <div class="rating" style="display:none;"><%= @user.average_rating * 20 %></div>
+        <div class="star-ratings">
+          <div class="star-ratings-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="star-ratings-bottom"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div>
+        </div>
+      </div>
     </p>
   </div>
 
