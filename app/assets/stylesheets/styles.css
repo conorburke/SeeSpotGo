@@ -190,6 +190,12 @@ i.material-icons {
   margin:auto;
   /*background:gray;*/
   height:200px;
+  clear:both;
+  float:left;
+}
+
+.reservation-right {
+  float:left;
 }
 
 .space-img {
@@ -216,12 +222,14 @@ i.material-icons {
   font-family: 'Varela Round', sans-serif;
 }
 
-.space-container button {
+.reservation-right input[type='submit'] {
   border-radius:5px;
   background:#45a342;
   color:white;
   outline:none;
+  /*margin:auto;*/
   float:right;
+  padding:6px 50px;
   margin-top:-5px;
 }
 
