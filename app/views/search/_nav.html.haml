@@ -34,15 +34,15 @@
             = number_field_tag :price, 2
             <br>
         .time-container.row
-          .start-time-container.col-md-6
+          .start-time-container.col-md-12
             = label_tag "Start Time:"
             <br>
-            = datetime_field_tag :start_time
-            <br>
-          .end-time-container.col-md-6
+            = datetime_select :start_time, start_year: Date.today.year, prompt: true, autofocus: true
+            <br><br>
+          .end-time-container.col-md-12
             = label_tag "End Time:"
             <br>
-            = datetime_field_tag :end_time
+            = datetime_select :end_time, start_year: Date.today.year, prompt: true, autofocus: true
             <br>
         .alert.alert-danger.col-md-12.hidden
           %span.glyphicon.glyphicon-exclamation-sign
