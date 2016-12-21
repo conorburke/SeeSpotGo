@@ -70,11 +70,33 @@ function clearMarkers() {
 
 // Render when linked-to the page.
 $(document).on("turbolinks:load", function() {
-  loadScript(); // Render Map.
-  $('input[type=checkbox][data-toggle^=toggle]').bootstrapToggle() // Render Toggle.
-})
+  // Render Map.
+  loadScript();
 
-$(document).ready(function() {
+  // Render Toggle.
+  $('input[type=checkbox][data-toggle^=toggle]').bootstrapToggle();
+
+  // Login.
+    $('form#new_user').on("submit", function(e){
+      event.preventDefault();
+      $.ajax({
+        url: $(this).attr("action"),
+        method: "POST",
+        data: $(this).serialize()
+      })
+        .done(function(response) {
+          console.log(response)
+          debugger
+        })
+    })
+
+  $('.modaltrigger').on("click", function(event) {
+    $("#loginmodal").css("display", "none");
+    $("#registermodal").css("display", "none");
+  })
+
+  $('.modaltrigger').leanModal({ top: 110, overlay: 0.45, closeButton: ".hidemodal" });
+
   // Switch Map/List View.
   $("input#view-toggle").on("change", function(event) {
     event.preventDefault();
