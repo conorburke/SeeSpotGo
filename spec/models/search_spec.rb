@@ -59,7 +59,6 @@ RSpec.describe Search, type: :model do
       search5.valid?
       expect(search5.errors).to include "Price is not valid"
     end
-
   end
 
   # pending "add some examples to (or delete) #{__FILE__}"
