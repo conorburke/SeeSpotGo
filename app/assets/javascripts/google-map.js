@@ -35,8 +35,6 @@ function loadScript() {
   document.body.appendChild(script);
 }
 
-window.onload = loadScript;
-
 // Marker Creation:
 function createMarker(latitude, longitude) {
   var marker = new google.maps.Marker({
@@ -65,9 +63,47 @@ function clearMarkers() {
 }
 
 // JQuery:
-$(document).ready(function() {
+$(document).on("turbolinks:load", function() {
+  loadScript();
+})
 
-  // createMarker($('#location').data('latitude'), $('#location').data('longitude'))
+$(document).ready(function() {
+  // Switch Map/List View.
+  $("input#view-toggle").on("change", function(event) {
+    event.preventDefault();
+    var viewData = {};
+
+    // Clear Script.
+    $("body").find("script").remove();
+
+    // Find Requested View.
+    if ($(".view-switch-form").find(".toggle").hasClass("btn-primary")) {
+      // Request Map View.
+      viewData["view"] = "map";
+
+      $.ajax({
+        url: "search/view",
+        method: "GET",
+        dataType: "json",
+        data: viewData
+      }).done(function(response) {
+        $(".search-container").find(".map-container").html(response["view"]);
+        loadScript();
+      })
+    } else {
+      // Request list view.
+      viewData["view"] = "list";
+
+      $.ajax({
+        url: "search/view",
+        method: "GET",
+        dataType: "json",
+        data: viewData
+      }).done(function(response) {
+        $(".search-container").find(".map-container").html(response["view"]);
+      })
+    }
+  })
 
   // Search for locations with spaces available around a location.
   $(".navbar-form").on("submit", function(event) {
@@ -79,9 +115,6 @@ $(document).ready(function() {
       dataType: "json",
       data: $(this).serialize()
     }).done(function(msg) {
-      // Take off Disabled Function.
-      $('.navbar-form').find('.btn-info').removeAttr('data-disable-with');
-
       // Erase current markers.
       clearMarkers();
 

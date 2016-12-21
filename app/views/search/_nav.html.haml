@@ -1,7 +1,13 @@
 .navbar.navbar-inverse
   .navbar-collapse.collapse.navbar-inverse-collapse
-    %h1.search-header
-      Reserve a Spot
+    .heading-container.row
+      .heading.col-md-9
+        %h1.search-header
+          Reserve a Spot
+      .toggle-container.col-md-3
+        %form.view-switch-form
+          %input{"id" => "view-toggle", "type" => "checkbox", "checked" => "true", "data-toggle" => "toggle", "data-on" => "Map View", "data-off" => "List View"}
+          %input.hidden{"type" => "submit"}
     .ey_nav_div
       = form_tag("/query", method: :get, class: "navbar-form") do
         .location-container.row
@@ -41,4 +47,4 @@
         .alert.alert-danger.col-md-12.hidden
           %span.glyphicon.glyphicon-exclamation-sign
           %span.error-message
-        = submit_tag "Find Parking", name: nil, :class => "btn btn-info search-submit", :disabled => false
+        %input{ "type" => "submit", "value" => "Find Parking", "class" => "btn btn-info search-submit"}

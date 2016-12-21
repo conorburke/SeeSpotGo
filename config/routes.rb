@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   get "search", to: 'search#index'
-
-  get '/search/query', to: 'search#query'
+  get "search/query", to: 'search#query'
+  get "search/view", to: 'search#view'
 
   get '/users/:id', to: 'users#show'
 

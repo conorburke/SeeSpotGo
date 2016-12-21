@@ -21,11 +21,7 @@ class Search
     elsif (!self.start_time || self.start_time.empty?) || (!self.end_time || self.end_time.empty?)
       errors << "Start/End time is not valid"
     else
-      begin
         prepare_search
-      rescue
-        errors << "Start/End time is not valid"
-      end
     end
 
     errors.empty? ? true : false
