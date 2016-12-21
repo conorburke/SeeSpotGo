@@ -31,4 +31,10 @@ class Reservation < ApplicationRecord
   def end_time_is_in_future
     errors.add(:end_time, 'must be in the future') if (self.end_time && self.end_time.past?)
   end
+
+  # Behaviors
+
+  def overlap?(start_time, end_time)
+    ((start_time > self.end_time) || (end_time < self.start_time)) ? false : true
+  end
 end
