@@ -25,9 +25,12 @@
   <% @location.spaces.each do |space| %>
     <% if space.space_active == 1 %>
       <div class="space-card">
-        <p>
-          <%= space.size %>
-        </p>
+        <!-- <div class="space-img">
+          <i class="material-icons">&#xE91B;</i> -->
+          <p>
+            <%= space.size %>
+          </p>
+        <!-- </div> -->
         <% if space.description %>
           <p><%= space.description %></p>
         <% end %>
