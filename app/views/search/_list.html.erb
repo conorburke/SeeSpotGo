@@ -16,7 +16,7 @@
               <span>Available? <%= space.space_active == 0 ? "No" : "Yes" %></span>
             </div>
             <div class="col-md-4 button-partial-container">
-              <button type="button" class="btn btn-default btn-list-partial">Book!</button>
+              <%= link_to "Book!", location_path(location), class: "btn btn-default btn-list-partial" %>
             </div>
           </div>
         </li>
