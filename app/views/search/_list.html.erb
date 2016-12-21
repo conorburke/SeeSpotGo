@@ -1,1 +1,15 @@
-<div>List View</div>
+<div class="total-spaces-container">
+  <% locations.each do |location| %>
+
+    <% spaces = location.active_spaces %>
+    <% spaces.each do |space| %>
+      <div class="space-container">
+        <p>Address: <%= space.location.full_street_address %></p>
+        <p>Size: <%= space.size %></p>
+        <p>Description: <%= space.description %>
+        <p>Available? <%= space.space_active == 0 ? "No" : "Yes" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
