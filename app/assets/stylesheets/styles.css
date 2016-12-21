@@ -109,8 +109,7 @@ button.find-parking {
 }
 
 .homepage-card {
-  margin:auto;
-  color:#3a3a3a;
+  margin:auto;\
 }
 
 .reservation-card {
@@ -138,7 +137,7 @@ button.find-parking {
 
 i.material-icons {
   font-size:900%;
-  color:#6A8D92;
+  color:#3a3a3a;
 }
 
 .side-container {
