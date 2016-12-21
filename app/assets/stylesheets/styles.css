@@ -155,6 +155,82 @@ i.material-icons {
   float:left;
 }
 
+.left-container {
+  width:350px;
+  min-height:600px;
+  float:left;
+  margin-right:30px;
+}
+
+.location-desc {
+  margin:auto;
+  margin-top:20px;
+  width:75%;
+  /*background:lightgray;*/
+  font-size:130%;
+  padding:10px 30px;
+  /*border:2px solid gray;*/
+  border-radius:7px;
+}
+
+.location-desc h3 {
+  /*text-align:center;*/
+  padding-bottom:2px;
+  /*border-bottom:2px solid black;*/
+}
+
+.space-container {
+
+  font-size:130%;
+  height:600px;
+  /*min-width:600px;*/
+  float:left;
+}
+
+.space-card {
+  width:200px;
+  margin:auto;
+  /*background:gray;*/
+  height:200px;
+}
+
+.space-img {
+  width:170px;
+  height:150px;
+  background:white;
+  display:inline-block;
+}
+
+.space-img i {
+  height: auto;
+  width:100%;
+}
+
+.space-img img {
+  height:auto;
+  width:100%;
+}
+
+.space-size {
+  text-align:center;
+  text-transform: uppercase;
+  vertical-align:text-bottom;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.space-container button {
+  border-radius:5px;
+  background:#45a342;
+  color:white;
+  outline:none;
+  float:right;
+  margin-top:-5px;
+}
+
+.rating-container {
+  margin-top:-30px;
+}
+
 footer {
   min-height:40px;
   background:#3a3a3a;
@@ -352,4 +428,54 @@ input#user_remember_me {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
 }
 
+/* List Partial */
+.list-partial-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-group {
+  width: 80%;
+}
+
+.list-group li {
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.list-items-partial span {
+  color: gray;
+  left: 20px;
+  display: block;
+
+}
+
+.list-group h2 {
+  color: #4eb74b;
+  text-align: center
+}
+
+.list-group h4 {
+  color: gray;
+}
+
+.btn-list-partial {
+  float: right;
+  color: gray;
+  overflow: auto;
+  /*align-items: center;*/
+  display: inline-block;
+  margin-top: 2%;
+  margin-left: 25%;
+  position: absolute;
+}
+
+.space-description {
+  clear: left;
+}
+
+/*.btn-partial-container {
+  display: flex;
+}*/
 

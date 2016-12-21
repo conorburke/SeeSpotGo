@@ -14,12 +14,16 @@ class SearchController < ApplicationController
     @space_params = search.space_params
 
     unless @locations.empty?
-      @results = @locations.map do |location|
+      if params[:view] == "list"
+        render :json => { :view => (render_to_string("search/_list", layout: false, locals: {locations: @locations, space_params: @space_params})) }
+      else
+        @results = @locations.map do |location|
         { latitude: location.latitude,
           longitude: location.longitude,
           infobox: (render_to_string("search/_infobox", layout: false, locals: {location: location, space_params: @space_params})) }
+        end
+        render :json => @results
       end
-      render :json => @results
     else
       render :json => { :fail => "No available parking spots in range." }
     end
@@ -27,7 +31,7 @@ class SearchController < ApplicationController
 
   def view
     if params[:view] == "list"
-      render :json => { :view => (render_to_string("search/_list", layout: false)) }
+      render :json => { :view => (render_to_string("search/_list", layout: false, locals: {locations: []})) }
     else
       render :json => { :view => (render_to_string("search/_map", layout: false)) }
     end
