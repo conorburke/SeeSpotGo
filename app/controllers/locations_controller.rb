@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find_by_id(params[:id])
     @user = User.find_by_id(@location.user_id)
-    @reservation = Reservation.new
+
     # @location_data = {
     #   latitude: @location.latitude,
     #   longitude: @location.longitude,

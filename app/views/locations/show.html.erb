@@ -1,38 +1,51 @@
-<div class="location-container">
-<!-- <div id="location-map"></div> -->
+<div class="left-container">
+  <div id="location-map"></div>
 
-<%= hidden_field_tag "location", @location.id, {  :id => "location",
-                                                  "data-latitude" => @location.latitude,
-                                                  "data-longitude" => @location.longitude } %>
+  <%= hidden_field_tag "location", @location.id, {  :id => "location",
+                                                    "data-latitude" => @location.latitude,
+                                                    "data-longitude" => @location.longitude } %>
 
-<div class="location-desc">
-  <h3>Location</h3>
-  <p>
-    <%= @location.street_address %><br />
-    <%= @location.city %>,
-    <%= @location.state %>
-    <%= @location.zip %>
-  </p>
-  <h3>Average Rating</h3>
-  <p>
-    <%= @user.average_rating %>
-  </p>
-</div>
+  <div class="location-desc">
+    <h3>Location</h3>
+    <p>
+      <%= @location.street_address %><br />
+      <%= @location.city %>,
+      <%= @location.state %>
+      <%= @location.zip %>
+    </p>
+    <h3>Average Rating</h3>
+    <p>
+    <!-- <div class="rating-static"></div> -->
+      <span class="rating-static rating-<%= @user.average_rating * 10 %>"></span>
+    </p>
+  </div>
 
 </div>
 
 <div class="space-container">
+  <h3>Spaces Available:</h3>
   <% @location.spaces.each do |space| %>
     <% if space.space_active == 1 %>
       <div class="space-card">
         <div class="space-img">
-          <p>
-            <%= space.size %>
-          </p>
-        </div>
-        <% if space.description %>
-          <p><%= space.description %></p>
+        <% if space.size == "standard" %>
+          <%= image_tag("standard.png") %>
+        <% elsif space.size == "compact" %>
+          <%= image_tag("compact.png") %>
+        <% elsif space.size == "large" %>
+          <%= image_tag("large.png") %>
+        <% elsif space.size == "rv" %>
+          <%= image_tag("rv.png") %>
+        <% else %>
+          <i class="material-icons">&#xE91B;</i>
         <% end %>
+
+          <p class="space-size">
+            <%= space.size %>
+            $<%= space.price.round %>/hr
+          </p>
+            <a href="/spaces/<%= space.id %>"><button>Book</button></a>
+        </div>
 
       </div>
     <% end %>
