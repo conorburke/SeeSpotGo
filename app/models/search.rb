@@ -44,6 +44,8 @@ class Search
     # prepare space_params
     self.space_params[:price] = self.price
     self.space_params[:size] = self.size
+    self.space_params[:start_time] = self.start_time
+    self.space_params[:end_time] = self.end_time
   end
 
   def location_in_range

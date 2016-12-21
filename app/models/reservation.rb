@@ -35,6 +35,6 @@ class Reservation < ApplicationRecord
   # Behaviors
 
   def overlap?(start_time, end_time)
-    ((start_time > self.end_time) || (end_time < self.start_time)) ? false : true
+    ((start_time >= self.end_time) || (end_time <= self.start_time)) ? false : true
   end
 end
