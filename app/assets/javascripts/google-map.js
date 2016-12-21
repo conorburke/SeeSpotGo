@@ -35,8 +35,6 @@ function loadScript() {
   document.body.appendChild(script);
 }
 
-window.onload = loadScript;
-
 // Marker Creation:
 function createMarker(latitude, longitude) {
   var marker = new google.maps.Marker({
@@ -65,6 +63,10 @@ function clearMarkers() {
 }
 
 // JQuery:
+$(document).on("turbolinks:load", function() {
+  loadScript();
+})
+
 $(document).ready(function() {
   // Switch Map/List View.
   $("input#view-toggle").on("change", function(event) {
