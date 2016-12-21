@@ -12,7 +12,7 @@ RSpec.describe Search, type: :model do
     let(:search) {Search.new(search: "707 Broadway, San Diego, CA 92102",
                   miles: "5",
                   size: "standard",
-                  constrain: "any",
+                  constrain: "less_than_or_equal_to",
                   price: "2",
                   start_time: "2016-12-25 08:00:00",
                   end_time: "2016-12-25 10:00:00")}
