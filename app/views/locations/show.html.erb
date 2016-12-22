@@ -24,28 +24,30 @@
 
 
   <% @location.spaces.order(:id).each do |space| %>
-    <div class="row">
-      <div class="col-md-6">
-        <%= render template: "spaces/_card", locals: {space: space} %>
+    <% if current_user == @location.owner || space.active? %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= render template: "spaces/_card", locals: {space: space} %>
+        </div>
+        <div class="col-md-6">
+          <strong>Description:</strong><br>
+          <%= (!space.description || space.description == "") ? "No information" : space.description %>
+        </div>
       </div>
-      <div class="col-md-6">
-        <strong>Description:</strong><br>
-        <%= (!space.description || space.description == "") ? "No information" : space.description %>
+      <div class="row">
+        <div class="edit">
+          <% if current_user.id != @location.user_id %>
+            <div class="reservation-right">
+              <%= render partial: "reservations/form", locals: { space: space, reservation: @reservation } %>
+            </div>
+          <% elsif current_user.id == @location.user_id %>
+            <%= link_to "Edit Space", edit_location_space_path(@location, space), class: "btn btn-primary edit-btn" %>
+            <div class="reservation-right hidden">
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="edit">
-        <% if current_user.id != @location.user_id %>
-          <div class="reservation-right">
-            <%= render partial: "reservations/form", locals: { space: space, reservation: @reservation } %>
-          </div>
-        <% elsif current_user.id == @location.user_id %>
-          <%= link_to "Edit Space", edit_location_space_path(@location, space), class: "btn btn-primary edit-btn" %>
-          <div class="reservation-right hidden">
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 
