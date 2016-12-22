@@ -1,13 +1,24 @@
 <%= form_for [space, reservation] do |f| %>
-
-    <div class="field">
-      <%= f.label :start_time %>
-      <%= f.datetime_local_field :start_time, autofocus: true %>
+    <div class="row" style="margin-bottom: 10px">
+      <div class="field">
+        <div class="col-md-4">
+          <%= f.label :start_time %>
+        </div>
+        <div class="col-md-8">
+          <%= f.datetime_local_field :start_time, autofocus: true %>
+        </div>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :end_time %>
-      <%= f.datetime_local_field :end_time, autofocus: true %>
+    <div class="row" style="margin-bottom: 10px">
+      <div class="field">
+        <div class="col-md-4">
+          <%= f.label :end_time %>
+        </div>
+        <div class="col-md-8">
+          <%= f.datetime_local_field :end_time, autofocus: true %>
+        </div>
+      </div>
     </div><br/>
 
     <div class="actions">
