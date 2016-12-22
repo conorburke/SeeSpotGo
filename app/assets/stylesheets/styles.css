@@ -175,7 +175,13 @@ i.material-icons {
 
 .profile-image-container {
   padding-top:20px;
-  width:170px;
+  min-width:100px;
+  max-width:220px;
+}
+
+.profile-image-container p {
+  margin:0;
+  padding:0;
 }
 
 .location-desc {

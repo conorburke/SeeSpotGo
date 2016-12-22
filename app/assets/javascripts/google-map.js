@@ -1,7 +1,7 @@
 // Map & Markers tracker.
 var map;
 var markers = [];
-var view = "map"; 
+var view = "map";
 // Map Creation:
 function initMap() {
   // Create map options.
@@ -69,7 +69,7 @@ function clearMarkers() {
 // JQuery:
 
 // Render when linked-to the page.
-$(document).on("turbolinks:load", function() {
+$(document).on("ready", function() {
   // Render Map.
   loadScript();
 
