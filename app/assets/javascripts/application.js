@@ -19,6 +19,14 @@
 
 
 $(function () {
+  $(".icon").click(function(){
+    var x = $(this).closest("#myTopnav");
+    if (x.hasClass("responsive")) {
+      x.removeClass("responsive");
+    } else {
+      x.addClass("responsive");
+    }
+  });
 
   var rating = $(".star-ratings").closest(".rating-container").find(".rating").text()
   $(".star-ratings-top").width(rating+'%');
