@@ -10,6 +10,8 @@ body {
 }
 nav {
   z-index:99;
+  width: 100%;
+  position: fixed;
 }
 ul.topnav {
     list-style-type: none;
@@ -81,6 +83,7 @@ a.btn.btn-primary.home-btn {
   margin-bottom:40px;
   height: 100%;
   padding:0px 15px;
+  padding-top: 50px;
   flex: 1;
 }
 
@@ -242,15 +245,16 @@ i.material-icons {
 }
 
 footer {
-  position:fixed;
-  left:0;
-  bottom:0;
-  width:100%;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
   min-height:40px;
   background:#333;
   color:lightgray;
   text-align: center;
   padding:10px;
+  z-index: 99;
 }
 
 footer a {
@@ -562,4 +566,17 @@ textarea {
 /*.btn-partial-container {
   display: flex;
 }*/
+
+.reservation-right .edit_space {
+  margin: 10px;
+  padding: 10px;
+  padding-bottom: 40px;
+/*  background-color: #e8fff2;*/
+  border: 1px solid #9b9b9b;
+  border-radius: 10px;
+}
+
+#location-map {
+  margin-top: 20px;
+}
 
