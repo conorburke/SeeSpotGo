@@ -3,14 +3,14 @@
     <div class="col-xs-12">
       <div class="field form-group">
         <%= f.label :size %><br />
-        <%= f.select :size, options_for_select([["Motorcycle", "motorcycle"], ['Compact', "compact"], ["Standard", "standard"], ["Large", "large"], ["RV", "RV"]], "standard"), class: "selectpicker form-control" %>
+        <%= f.select :size, options_for_select([["Motorcycle", "motorcycle"], ['Compact', "compact"], ["Standard", "standard"], ["Large", "large"], ["RV", "RV"]], (space.size ? space.size : "standard")), class: "selectpicker form-control" %>
       </div>
     </div>
 
     <div class="col-xs-12">
       <div class="field form-group">
         <%= f.label "Price ($ per hr)" %><br/>
-        <%= f.number_field :price, autofocus: true, value: 2, class: "btn-custom" %>
+        <%= f.number_field :price, autofocus: true, class: "btn-custom" %>
       </div>
     </div>
 
@@ -27,7 +27,7 @@
       <%= f.label "For Rent" %><br/>
     </div>
     <div class="field col-xs-4 toggle-label">
-      <%= f.check_box :space_active, id: "active-toggle", "checked" => true, "data-toggle" => "toggle", "data-on" => "On", "data-off" => "Off" %>
+      <%= f.check_box :space_active, id: "active-toggle", "data-toggle" => "toggle", "data-on" => "On", "data-off" => "Off" %>
     </div>
   </div><br>
   <div class="actions">

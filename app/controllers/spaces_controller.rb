@@ -8,13 +8,20 @@ class SpacesController < ApplicationController
   # end
 
   def new
+    @space = Space.new({size: "standard", price: 2, space_active: 1})
     @location = Location.find_by_id(params[:location_id])
-    render :json => { :space_form => (render_to_string("spaces/_form", layout: false, locals: {location: @location, space: Space.new})) }
+    render :json => { :space_form => (render_to_string("spaces/_form", layout: false, locals: {location: @location, space: @space})) }
   end
 
   def create
     @space = Space.create(space_params)
     redirect_to @space.location
+  end
+
+  def edit
+    @location = Location.find_by_id(params[:location_id])
+    @space = Space.find_by_id(params[:id])
+    render :json => { :edit_form => (render_to_string("spaces/_form", layout: false, locals: {location: @location, space: @space})) }
   end
 
   def update
