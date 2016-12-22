@@ -1,7 +1,7 @@
 #SeeSpotGo
 [![Build Status](https://travis-ci.org/conorburke/SeeSpotGo.svg?branch=master)](https://travis-ci.org/conorburke/SeeSpotGo)
 
-[SeeSpotGo](https://seespotgo.herokuapp.com)
+[SeeSpotGo Demo](https://seespotgo.herokuapp.com)
 
 ##What is SeeSpotGo?
 
@@ -20,13 +20,13 @@ Find a spot.  Park your car.  Get going!
 
 * Rails version: 5.0.0.1
 * Ruby version: 2.3.1
-* Depolyment Server: Heroku
+* Deployment Server: Heroku
 * Database: PostgreSQL v9.5.5 on x86_64-apple-darwin15.6.0
 * Test Suite: RSpec (rspec-rails v3.5)
 * Security: Devise v4.0
 * Chat Server Development: Redis v3.2 
 * Chat Server Production: RedisCloud
-* Google Maps
+* Google Maps API
 * Geocoder
 
 ##Download
@@ -36,12 +36,25 @@ Find a spot.  Park your car.  Get going!
 ##Developing
 To contribute towards SeeSpotGo, clone the repository, navigate to the directory, and follow these steps: 
 
-1. Run `bundle install`
-2. Run `rails db:create`
-3. Run `rails db:migrate`
-4. Run `rails db:seed` (this will populate the database with selected locations around the San Diego area)
-5. Run `rails s` and the application will be running on your local server.  Simply navigate to `http://localhost:3000` in your browser to view the app.
-6. To manage the database, run `rails c`
+Install all gem dependencies: 
+```
+bundle install
+```
+Create and populate the database with selected locations around the San Diego area:
+```
+rails db:create
+rails db:migrate
+rails db:seed
+```
+Start the local server and navigate to `http://localhost:3000` in your browser:
+```
+rails s
+redis-server
+```
+Manage the database: 
+```
+rails c
+```
 
 ###Homescreen
 ![](homescreen_pic.png)
@@ -54,3 +67,6 @@ To contribute towards SeeSpotGo, clone the repository, navigate to the directory
 
 ###Model Schema
 ![](Schema1.png)
+
+###License
+This project is licensed under the terms of the MIT license.
