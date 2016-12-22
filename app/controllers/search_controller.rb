@@ -30,6 +30,14 @@ class SearchController < ApplicationController
     end
   end
 
+  def get_avatar
+    if current_user
+      render :json => { :image_url => "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.email)}?d=retro&r=pg" }
+    else
+      render :json => { :fail => "not logged in" }
+    end
+  end
+
   def view
     if params[:view] == "list"
       render :json => { :view => (render_to_string("search/_list", layout: false, locals: {locations: []})) }

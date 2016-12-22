@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "search", to: 'search#index'
   get "search/query", to: 'search#query'
   get "search/view", to: 'search#view'
+  get "search/get_avatar", to: 'search#get_avatar'
 
   get '/users/:id', to: 'users#show'
 

@@ -3,33 +3,120 @@ var map;
 var markers = [];
 var view = "map";
 var currentMarker;
+var currentPos;
+var mapOptions;
 
 // Map Creation:
 function initMap() {
   // Create map options.
-  var mapOptions = {
-    center: {lat: 32.7157, lng: -117.1611},
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    mapTypeControl: false,
-    zoom: 13,
-    styles: [ { stylers: [ { hue: "#00ff6f" }, { saturation: -50 } ] },
-              {
-                "featureType": "water",
-                "elementType": "all",
-                "stylers": [ { hue: "#AED6F1" },
-                             { saturation: -10 },
-                             { lightness: 30 } ]
-              }
-            ]
-  };
+    mapOptions = {
+      center: {lat: 32.7157, lng: -117.1611},
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControl: false,
+      zoom: 14,
+      styles: [ { stylers: [ { hue: "#00ff6f" }, { saturation: -50 } ] },
+                {
+                  "featureType": "water",
+                  "elementType": "all",
+                  "stylers": [ { hue: "#AED6F1" },
+                               { saturation: -10 },
+                               { lightness: 30 } ]
+                }
+              ]
+    };
 
   // Create a map object and specify the DOM element for display using defined mapOptions.
-  if ($('#search-map').length) { map = new google.maps.Map(document.getElementById('search-map'), mapOptions) }
-  if ($('#location-map').length) {
+  if ($('#search-map').length) {
+    map = new google.maps.Map(document.getElementById('search-map'), mapOptions);
+    $.ajax({
+      url: "search/get_avatar",
+      method: "GET"
+    }).done( function(response) {
+      generateAvatar(response)
+    })
+  } else if ($('#location-map').length) {
     map = new google.maps.Map(document.getElementById('location-map'), mapOptions)
     marker = createMarker($('#location').data('latitude'), $('#location').data('longitude'))
     map.setCenter(marker.getPosition())
   }
+}
+
+// Avatar Function.
+function generateAvatar(response) {
+  currentPos = null;
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var currentPos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      // Set Blue Dot.
+      var image = 'http://i.stack.imgur.com/orZ4x.png';
+      var marker = new google.maps.Marker({
+        position: currentPos,
+        zIndex: 0,
+        map: map,
+        icon: image
+      });
+
+      if (response["image_url"]) {
+        // Set Info Box.
+        var infoBoxImage = 'http://i.stack.imgur.com/KOh5X.png';
+        var infoBoxmarker = new google.maps.Marker({
+          position: currentPos,
+          map: map,
+          zIndex: 1,
+          icon: {
+            url: infoBoxImage,
+            anchor: new google.maps.Point(20, 60)
+          }
+        });
+        marker.setMap(map);
+
+        // Set Avatar.
+        var avartar = response["image_url"];
+        var avartarMarker = new google.maps.Marker({
+          position: currentPos,
+          map: map,
+          zIndex: 2,
+          icon: {
+            url: avartar,
+            scaledSize: new google.maps.Size(32, 32),
+            anchor: new google.maps.Point(16, 56)
+          }
+        })
+      } else {
+        var infoWindow = new google.maps.InfoWindow({
+          map: map,
+          pixelOffset: new google.maps.Size(0, -20),
+          content: "You are HERE",
+          position: currentPos
+        });
+      }
+
+      map.setCenter(currentPos);
+    }, function() {
+      handleLocationError(true, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, map.getCenter());
+  }
+}
+
+// Handle GeoLocation Error.
+function handleLocationError(browserHasGeolocation, pos) {
+  var infoWindow = new google.maps.InfoWindow({
+    map: map,
+    pixelOffset: new google.maps.Size(0, -20),
+    position: currentPos
+  });
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
 }
 
 // Load script onto page.
@@ -145,17 +232,10 @@ $(document).on("ready", function() {
     }
   })
 
-  // Clear Location Form.
-    // $(".reset").click(function() {
-    //   $(this).closest('form').find("input[type=text], textarea").val("");
-    // });
-
   // Switch Map/List View.
   $("input#view-toggle").on("change", function(event) {
     event.preventDefault();
     var viewData = {};
-
-    $("body").find("script").remove(); // Clear Script.
 
     // Request Specific View from Server.
     if ($(".view-switch-form").find(".toggle").hasClass("btn-primary")) { // Decide which view to request.
@@ -170,7 +250,13 @@ $(document).on("ready", function() {
         data: viewData
       }).done(function(response) {
         $(".search-container").find(".map-container").html(response["view"]); // Render map view.
-        loadScript();
+        map = new google.maps.Map(document.getElementById('search-map'), mapOptions); // Re-generate Map.
+        $.ajax({
+          url: "search/get_avatar",
+          method: "GET"
+        }).done( function(response) {
+          generateAvatar(response)
+        })
       })
     } else {
       // Request list view.
