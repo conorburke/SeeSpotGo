@@ -23,6 +23,9 @@ class Search
       errors << "Start/End time is not valid"
     else
       prepare_search
+      # if self.start_time < Time.zone.now || self.end_time < self.start_time
+      #   errors << "Start/End time is not valid"
+      # end
     end
 
     self.errors.empty? ? true : false
