@@ -1,4 +1,4 @@
-  <%= form_for [location, space] do |f| %>
+  <%= form_for [location, space], url: space_path(space) do |f| %>
     <div class="field">
       <%= f.label :size %><br/>
       <%= f.text_field :size, autofocus: true %>

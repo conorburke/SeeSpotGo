@@ -175,7 +175,13 @@ i.material-icons {
 
 .profile-image-container {
   padding-top:20px;
-  width:170px;
+  min-width:100px;
+  max-width:220px;
+}
+
+.profile-image-container p {
+  margin:0;
+  padding:0;
 }
 
 .location-desc {
@@ -258,7 +264,7 @@ i.material-icons {
 footer {
   min-height:40px;
   background:#3a3a3a;
-  color:white;
+  color:lightgray;
   /*background-color: #efefef;*/
   text-align: center;
   padding:10px;
