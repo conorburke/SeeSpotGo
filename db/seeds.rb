@@ -36,6 +36,10 @@ Location.create({street_address: "644 Fifth Ave",
                 state: "CA",
                 zip: "92101",
                 user_id: 4})
+
+4.times do |n|
+  ChatRoom.create(title: Location.find(n).street_address, location_id: Location.find(n).id, user_id: 1)
+end
 # Locations
 
 # User.all.each do |user|
