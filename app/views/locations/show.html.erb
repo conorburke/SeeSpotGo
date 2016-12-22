@@ -33,10 +33,29 @@
 
 
   <% @location.spaces.order(:id).each do |space| %>
-    <%= render template: "spaces/_card", locals: {space: space} %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= render template: "spaces/_card", locals: {space: space} %>
+      </div>
+      <div class="col-md-6">
+        <strong>Description:</strong><br>
+        <%= (!space.description || space.description == "") ? "No information" : space.description %>
+      </div>
+    </div>
+    <div class="edit">
+      <% if current_user.id != @location.user_id %>
+        <div class="reservation-right">
+          <%= render partial: "reservations/form", locals: { space: space, reservation: @reservation } %>
+        </div>
+      <% elsif current_user.id == @location.user_id %>
+        <%= link_to "Edit Space", edit_location_space_path(@location, space), class: "btn btn-primary edit-btn" %>
+        <div class="reservation-right hidden">
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
-<div class="roight-container col-md-4">
+<div class="right-container col-md-4">
   <%= render "chat_rooms/single_room" %>
 </div>

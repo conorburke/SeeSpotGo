@@ -314,4 +314,26 @@ $(document).on("ready", function() {
       return false
     })
   })
+
+  // Render Edit Form.
+  $(".space-container").on("click", ".edit-btn", function(event) {
+    var button = $(this);
+    event.preventDefault();
+    $.ajax({
+      url: $(this).attr("href"),
+      method: "GET"
+    }).done(function(response) {
+      var target = button.closest(".edit").find(".reservation-right");
+      target.html(response["edit_form"]);
+      target.find("input[type=submit]").val("Update Space");
+      $('input[type=checkbox][data-toggle^=toggle]').bootstrapToggle();
+      if (target.hasClass("hidden")) {
+        button.text("Cancel");
+        target.removeClass("hidden")
+      } else {
+        button.text("Edit Space");
+        target.addClass("hidden")
+      }
+    })
+  })
 })
