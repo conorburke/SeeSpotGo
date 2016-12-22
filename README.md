@@ -1,13 +1,13 @@
 #SeeSpotGo
-![Build Status](https://travis-ci.org/conorburke/SeeSpotGo.svg?branch=master)](https://travis-ci.org/conorburke/SeeSpotGo)
+[![Build Status](https://travis-ci.org/conorburke/SeeSpotGo.svg?branch=master)](https://travis-ci.org/conorburke/SeeSpotGo)
 
 [SeeSpotGo](https://seespotgo.herokuapp.com)
 
 ##What is SeeSpotGo?
 
-Everyone hates driving around in circles looking for parking, and when you do finally find a spot you're usually paying an exorbitant amount of money.  SeeSpotGo solves that problem by enabling users to both find available parking spots and rent out spots they own.  It's easy to sign up for and just as easy to find a spot (or rent out your spot and make some extra money!) You can also chat with other users to help find great deal in the area. 
+Everyone hates driving around in circles looking for parking, and when you do finally find a spot you're usually paying an exorbitant amount of money.  SeeSpotGo solves that problem by enabling users to both find available parking spots and rent out spots they own.  It's easy to sign up for and just as easy to find a spot (or rent out your spot and make some extra money!) You can also chat with other users to help find great deals in the area. 
 
-Find a spot. Park your car.  Get going!
+Find a spot.  Park your car.  Get going!
 
 ##Contributing
 
@@ -26,6 +26,7 @@ Find a spot. Park your car.  Get going!
 * Security: Devise v4.0
 * Chat Server Development: Redis v3.2 
 * Chat Server Production: RedisCloud
+* Google Maps
 * Geocoder
 
 ##Download
@@ -38,14 +39,14 @@ To contribute towards SeeSpotGo, clone the repository, navigate to the directory
 1. Run `bundle install`
 2. Run `rails db:create`
 3. Run `rails db:migrate`
-4. Run `rails db:seed` (this will populate the database with selected locationsround the San Diego area)
+4. Run `rails db:seed` (this will populate the database with selected locations around the San Diego area)
 5. Run `rails s` and the application will be running on your local server.  Simply navigate to `http://localhost:3000` in your browser to view the app.
 6. To manage the database, run `rails c`
 
 ###Homescreen
 ![](homescreen_pic.png)
 
-###Map
+###Map and Reservations
 ![](map_pic.png)
 
 ###Chat
@@ -53,38 +54,3 @@ To contribute towards SeeSpotGo, clone the repository, navigate to the directory
 
 ###Model Schema
 ![](Schema1.png)
-
-
-
-
-
-
-
-
-
-
-
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
