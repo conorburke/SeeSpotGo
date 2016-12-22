@@ -11,11 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
 //= require cable
+
 
 $(function () {
 
@@ -53,3 +54,7 @@ $(function () {
   });
 
 });
+
+
+//= turbolinks
+

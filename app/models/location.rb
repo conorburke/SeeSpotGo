@@ -26,4 +26,10 @@ class Location < ApplicationRecord
   def full_street_address
     "#{self.street_address}, #{self.city}, #{self.state} #{self.zip}"
   end
+
+  def average_rating
+    ratings = self.ratings.pluck(:score)
+    ratings.reduce(:+) ? (ratings.reduce(:+)/ratings.size.to_f).round(1) : 0
+  end
+
 end
