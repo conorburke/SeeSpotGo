@@ -1,6 +1,6 @@
 <div class="left-container profile-image-container">
 
-  <i class="material-icons">&#xE7FD;</i>
+  <div><img src=<%= "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email)}?d=retro&r=pg&s=150" %> /></div>
 
   <h3><%= @user.first_name %> <%= @user.last_name %></h3>
   <p><%= @user.phone %></p>
