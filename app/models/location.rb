@@ -4,6 +4,7 @@ class Location < ApplicationRecord
   has_many :active_spaces, -> { where(space_active: 1) }, class_name: :Space
   has_many :reservations, through: :spaces
   has_many :ratings, through: :reservations
+  has_one :chat_room
 
   STATES = %w(AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY
               LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND

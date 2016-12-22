@@ -13,8 +13,13 @@ class SpacesController < ApplicationController
   end
 
   def create
-    p params
-    p @space = Space.create(space_params)
+    @space = Space.create(space_params)
+    redirect_to @space.location
+  end
+
+  def update
+    @space = Space.find_by_id(params[:id])
+    @space.update(space_params)
     redirect_to @space.location
   end
 
