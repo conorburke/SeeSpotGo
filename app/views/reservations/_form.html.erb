@@ -1,17 +1,16 @@
-<%= form_for [@space, @reservation] do |f| %>
+<%= form_for [space, reservation] do |f| %>
 
     <div class="field">
-      <%= f.label :start_time %><br />Start Time:
-      <%= f.datetime_select :start_time, start_year: Date.today.year, prompt: true, autofocus: true %>
+      <%= f.label :start_time %>
+      <%= f.datetime_local_field :start_time, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :end_time %><br />End Time:
-      <%= f.datetime_select :end_time, start_year: Date.today.year, prompt: true, autofocus: true %>
+      <%= f.label :end_time %>
+      <%= f.datetime_local_field :end_time, autofocus: true %>
     </div><br/>
 
-
     <div class="actions">
-      <%= f.submit "Submit" %>
+      <%= f.submit "Book" %>
     </div>
 <% end %>

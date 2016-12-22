@@ -87,7 +87,7 @@ function clearMarkers() {
 // JQuery:
 
 // Render when linked-to the page.
-$(document).on("turbolinks:load", function() {
+$(document).on("ready", function() {
   // Render Map.
   loadScript();
 

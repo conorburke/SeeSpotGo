@@ -38,13 +38,17 @@ RSpec.describe User, type: :model do
     let (:space) {Space.create(location_id: location.id, price: 2)}
     let (:reservation) {Reservation.create(space_id: space.id, occupant_id: rater.id, start_time: '2016-12-25 08:00:00', end_time: '2016-12-25 10:00:00')}
 
-    it 'checks the average user score' do
-        Rating.create(reservation_id: reservation.id, user_id: user.id, rater_id: rater.id, score: 4, comment: "good job")
-        expect(user.average_rating).to eq 4
-    end
+    describe '#average_rating' do
 
-    it 'returns 0 if there are no ratings' do
-        expect(rater.average_rating).to eq 0
+        it 'returns 0 if there are no ratings' do
+            expect(user.average_rating).to eq 0
+        end
+
+        it 'checks the average user score' do
+            Rating.create(reservation_id: reservation.id, user_id: user.id, rater_id: rater.id, score: 4, comment: "good job")
+            expect(user.average_rating).to eq 4
+        end
+
     end
 
     it 'returns full name of user' do

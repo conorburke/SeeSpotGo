@@ -11,11 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
 //= require cable
+
 
 $(function () {
 
@@ -29,10 +30,10 @@ $(function () {
     normalFill: "#A0A0A0"
   });
 
+
   $(".rateYo").click(function(e){
     var reservation_id = $(this).closest(".reservation-card").attr("id");
     var score = $(this).rateYo("option", "rating");
-
 
     var data = {reservation_id: reservation_id, score: score};
 
@@ -40,8 +41,20 @@ $(function () {
       method: "POST",
       url: "/ratings",
       data: data
+    }).done(function(){
+      $(".rateYo").rateYo({
+        rating: data.score,
+        starWidth: "20px",
+        ratedFill: "#F1C40F",
+        normalFill: "#A0A0A0",
+        readOnly: true
+      });
     });
 
   });
 
 });
+
+
+//= turbolinks
+
