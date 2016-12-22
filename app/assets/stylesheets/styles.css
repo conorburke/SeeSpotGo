@@ -181,15 +181,17 @@ i.material-icons {
 }
 
 .space-container {
+
   font-size:130%;
   height:600px;
   float:left;
 }
 
 .space-card {
+
   width:200px;
   margin:auto;
-  height:200px;
+  height:150px;
   clear:both;
   float:left;
 }
