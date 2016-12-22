@@ -1,30 +1,40 @@
 html {
   height: 100%;
 }
-.asdf {
-  background:red;
-}
+
 body {
   min-height:100%;
   display:flex;
   flex-direction: column;
   background:white;
 }
-
 nav {
   z-index:99;
-  padding-left:10px;
-  position:absolute;
-  top:0;
-  right:0;
-  width:100%;
-  text-align:right;
-  /*background:white;*/
-  background:#3a3a3a;
-  -webkit-box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.75);
-box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.75);
 }
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.topnav li:not(:first-child) {float: right;}
+ul.topnav li:first-child {float: left;}
+
+ul.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+ul.topnav li a:hover {background-color: #555;}
+
+ul.topnav li.icon {display: none;}
 
 .left-align {
   text-align: left;
@@ -32,32 +42,7 @@ box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.75);
   font-family: 'Varela Round', sans-serif;
 }
 
-nav ul {
-  position: absolute;
-  top:10px;
-  right:0;
-}
-
-nav li {
-  list-style-type:none;
-  display:inline;
-  padding: 8px 15px 8px 15px;
-  /*border-right: 2px solid white;*/
-}
-
-nav a {
-  color:white;
-}
-nav a:hover {
-  color:#4eb74b;
-}
-
-nav li:last-child{
-  border:none;
-}
-
 .landing-container {
- /*background:black;*/
   background: linear-gradient(to right, black,black, transparent), url("http://www.emeraldhs.com/wp-content/uploads/2015/11/Parking.jpg") no-repeat center;
   background-size: cover;
   margin: -37px -15px 0px -15px;
@@ -94,7 +79,6 @@ a.btn.btn-primary.home-btn {
 .page-container {
   padding:0px 15px;
   flex: 1;
-  margin-top:60px;
 }
 
 .block-container {
@@ -140,7 +124,6 @@ a.btn.btn-primary.home-btn {
   padding:0;
   width: 200px;
   min-height:200px;
-  /*border: 3px solid lightgray;*/
   border-radius: 10px;
 }
 
@@ -188,31 +171,24 @@ i.material-icons {
   margin:auto;
   margin-top:20px;
   width:75%;
-  /*background:lightgray;*/
   font-size:130%;
   padding:10px 30px;
-  /*border:2px solid gray;*/
   border-radius:7px;
 }
 
 .location-desc h3 {
-  /*text-align:center;*/
   padding-bottom:2px;
-  /*border-bottom:2px solid black;*/
 }
 
 .space-container {
-
   font-size:130%;
   height:600px;
-  /*min-width:600px;*/
   float:left;
 }
 
 .space-card {
   width:200px;
   margin:auto;
-  /*background:gray;*/
   height:200px;
   clear:both;
   float:left;
@@ -251,7 +227,6 @@ i.material-icons {
   background:#45a342;
   color:white;
   outline:none;
-  /*margin:auto;*/
   float:right;
   padding:6px 50px;
   margin-top:-5px;
@@ -263,14 +238,21 @@ i.material-icons {
 
 footer {
   min-height:40px;
-  background:#3a3a3a;
+  background:#333;
   color:lightgray;
-  /*background-color: #efefef;*/
   text-align: center;
   padding:10px;
 }
 
-@media (max-width: 700px) {
+footer a {
+  color: white;
+}
+
+footer a:hover {
+  color:#4eb74b;
+}
+
+@media screen and (max-width: 700px) {
   .block-container  {
     width: 50%;
     float: left;
@@ -287,6 +269,27 @@ footer {
 
   .landing-container h3 {
     font-size:250%;
+  }
+
+  ul.topnav li:not(:first-child) {display: none;}
+  ul.topnav li.icon {
+    float: right;
+    display: inline-block;
+  }
+
+  ul.topnav.responsive {position: relative;}
+  ul.topnav.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.topnav.responsive li {
+    float: none;
+    display: inline;
+  }
+  ul.topnav.responsive li a {
+    display: block;
+    text-align: left;
   }
 }
 
@@ -349,7 +352,7 @@ footer {
   padding: 5px;
   background-color: lightgray;
   border: 1px solid #4eb74b;
-  border-radius: 10px; 
+  border-radius: 10px;
 }
 
 

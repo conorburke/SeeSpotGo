@@ -105,29 +105,23 @@
     </div>
 
     <!-- NavBar -->
+
     <nav>
-      <div class="left-align">
-        <div id='logo'></div>
-        <%= link_to "SeeSpotGo", root_url, style: "text-decoration: none; color: #4eb74b" %>
-      </div>
-      <ul>
+      <ul class="topnav" id="myTopnav">
+        <li><%= link_to "SeeSpotGo", root_url, style: "text-decoration: none; color: #4eb74b; margin-top:-5px; margin-bottom:-5px;font-size:180%; font-family:'Varela Round'" %></li>
         <% if !user_signed_in? %>
-          <li>
-            <a href="#loginmodal" class="modaltrigger" >Login</a>
-          </li>
-          <li>
-            <a href="#registermodal" class="modaltrigger" >Register</a>
-          </li>
+          <li><a href="#registermodal" class="modaltrigger" >Register</a></li>
+          <li><a href="#loginmodal" class="modaltrigger" >Login</a></li>
         <% else %>
-          <li>
-            <a href="/users/<%=current_user.id%>"><%=current_user.email%></a>
-          </li>
-          <li>
-            <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "nav-bar"  %>
-          </li>
+          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "nav-bar"  %></li>
+          <li><a href="/users/<%=current_user.id%>"><%=current_user.email%></a></li>
         <% end %>
+        <li class="icon">
+          <a href="#">&#9776;</a>
+        </li>
       </ul>
     </nav>
+
 
     <div class="page-container">
     <!-- <p class="notice"><%= notice %></p>
@@ -137,6 +131,6 @@
 
     <!-- Overlay -->
     <div id="lean_overlay" style="display: none; opacity: 0.65;"></div>
-    <footer>Designed by Team Haulr</footer>
+    <footer>Designed by <a href="http://www.github.com/conorburke/seespotgo">Team Haulr</a></footer>
   </body>
 </html>
