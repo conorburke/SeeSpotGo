@@ -6,6 +6,7 @@ RSpec.describe Location, type: :model do
     it { should have_many(:spaces) }
     it { should have_many(:active_spaces).conditions(space_active: 1).class_name('Space') }
     it { should have_many(:reservations).through(:spaces) }
+    it { should have_one(:chat_room) }
   end
 
   describe "Validations" do
