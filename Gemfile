@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'awesome_print'
 gem 'validates_overlap'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
