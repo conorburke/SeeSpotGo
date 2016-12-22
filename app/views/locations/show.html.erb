@@ -32,7 +32,7 @@
 
 
 
-  <% @location.spaces.each do |space| %>
+  <% @location.spaces.order(:id).each do |space| %>
     <%= render template: "spaces/_card", locals: {space: space} %>
   <% end %>
 </div>

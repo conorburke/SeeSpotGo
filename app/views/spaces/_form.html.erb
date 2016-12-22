@@ -3,7 +3,7 @@
     <div class="col-xs-12">
       <div class="field form-group">
         <%= f.label :size %><br />
-        <%= select_tag :size, options_for_select([["Motorcycle", "motorcycle"], ['Compact', "compact"], ["Standard", "standard"], ["Large", "large"], ["RV", "RV"]], "standard"), class: "selectpicker form-control" %>
+        <%= f.select :size, options_for_select([["Motorcycle", "motorcycle"], ['Compact', "compact"], ["Standard", "standard"], ["Large", "large"], ["RV", "RV"]], "standard"), class: "selectpicker form-control" %>
       </div>
     </div>
 

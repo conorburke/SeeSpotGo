@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   resources :locations do
-    resources :spaces, only: [:new, :create]
+    resources :spaces, only: [:new, :create, :edit, :update]
   end
 
-  resources :spaces, except: [:new, :create] do
-    resources :reservations, only: [:new, :create]
+  resources :spaces, except: [:new, :create, :edit, :update] do
+    resources :reservations, only: [:new, :create, :edit, :update]
   end
 
   root to: "home#index"
