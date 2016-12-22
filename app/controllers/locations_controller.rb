@@ -16,6 +16,8 @@ class LocationsController < ApplicationController
     @location = Location.find_by_id(params[:id])
     @user = User.find_by_id(@location.user_id)
     @reservation = Reservation.new()
+    @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
+    @message = Message.new
   end
 
   def update

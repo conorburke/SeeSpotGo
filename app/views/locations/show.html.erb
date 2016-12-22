@@ -1,4 +1,4 @@
-<div class="left-container">
+<div class="left-container col-md-4">
   <div id="location-map"></div>
 
   <%= hidden_field_tag "location", @location.id, {  :id => "location",
@@ -27,7 +27,7 @@
 
 </div>
 
-<div class="space-container">
+<div class="space-container col-md-4">
   <h3>Spaces Available:</h3>
 
 
@@ -35,4 +35,8 @@
   <% @location.spaces.each do |space| %>
     <%= render template: "spaces/_card", locals: {space: space} %>
   <% end %>
+</div>
+
+<div class="roight-container col-md-4">
+  <%= render "chat_rooms/single_room" %>
 </div>
