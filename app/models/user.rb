@@ -26,4 +26,8 @@ class User < ApplicationRecord
     ratings = self.received_ratings.pluck(:score)
     ratings.reduce(:+) ? (ratings.reduce(:+)/ratings.size.to_f).round(1) : 0
   end
+
+  def full_name
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+  end
 end

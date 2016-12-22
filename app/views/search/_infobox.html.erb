@@ -2,6 +2,7 @@
   <% spaces = location.active_spaces %>
   <span><strong>Address: </strong></span><br>
   <span><%= location.full_street_address %></span><br>
+  <span><strong>Owner: </strong><%= location.owner.full_name %> <strong>Rating: </strong><%= location.owner.average_rating != 0 ? location.owner.average_rating : "Unrated" %></span><br>
   <span><strong>Spaces Available: </strong></span><br>
   <% unless spaces.empty? %>
     <ol>
