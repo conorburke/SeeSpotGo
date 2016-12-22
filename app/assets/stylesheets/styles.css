@@ -339,9 +339,23 @@ footer {
   padding: 30px;
 }
 
-.chat-room-info  ul {
-  list-style: none;
+.chat-room-info  div {
+  padding: 5px;
+  background-color: lightgray;
+  border: 1px solid #4eb74b;
+  border-radius: 10px; 
+}
+
+
+.chat-room-info  div span {
   text-align: left;
+  display: block;
+  padding: 2px;
+}
+
+.chat-room-info  div span a {
+  color: #4eb74b;
+  font-weight: bold;
 }
 
 .chat-room-header {
