@@ -45,14 +45,14 @@ ul.topnav li.icon {display: none;}
 .landing-container {
   background: linear-gradient(to right, black,black, transparent), url("http://www.emeraldhs.com/wp-content/uploads/2015/11/Parking.jpg") no-repeat center;
   background-size: cover;
-  margin: -37px -15px 0px -15px;
+  margin: -50px -15px 0px -15px;
   height:500px;
 }
 
 .landing-container h2 {
   padding-left:30px;
   padding-top:100px;
-  color:#45a342;
+  color:#61a87f;
   font-size:500%;
   text-align:left;
 }
@@ -68,8 +68,8 @@ a.btn.btn-primary.home-btn {
   margin-top:30px;
   margin-left:30px;
   padding:10px;
-  background: #45a342;
-  border-color: #45a342;
+  background: #61a87f;
+  border-color: #61a87f;
   border-radius: 0;
   color:white;
   outline:none;
@@ -77,6 +77,9 @@ a.btn.btn-primary.home-btn {
 }
 
 .page-container {
+  margin-top:20px;
+  margin-bottom:40px;
+  height: 100%;
   padding:0px 15px;
   flex: 1;
 }
@@ -224,7 +227,7 @@ i.material-icons {
 
 .reservation-right input[type='submit'] {
   border-radius:5px;
-  background:#45a342;
+  background:#61a87f;
   color:white;
   outline:none;
   float:right;
@@ -237,6 +240,10 @@ i.material-icons {
 }
 
 footer {
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
   min-height:40px;
   background:#333;
   color:lightgray;
@@ -249,7 +256,7 @@ footer a {
 }
 
 footer a:hover {
-  color:#4eb74b;
+  color:#61a87f;
 }
 
 @media screen and (max-width: 700px) {
@@ -363,12 +370,12 @@ footer a:hover {
 }
 
 .chat-room-info  div span a {
-  color: #4eb74b;
+  color: #61a87f;
   font-weight: bold;
 }
 
 .chat-room-header {
-  color: #4eb74b;
+  color: #61a87f;
 }
 
 li span {
@@ -527,7 +534,7 @@ textarea {
 }
 
 .list-group h2 {
-  color: #4eb74b;
+  color: #61a87f;
   text-align: center
 }
 
