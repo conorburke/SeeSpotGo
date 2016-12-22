@@ -2,22 +2,23 @@
 
   <i class="material-icons">&#xE7FD;</i>
 
-  <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
-  <p><%= current_user.phone %></p>
-  <p><%= current_user.email %></p>
+  <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+  <p><%= @user.phone %></p>
+  <p><%= @user.email %></p>
+  <%= render partial: "ratings/show", locals: { rated_thing: @user } %>
 </div>
 <div class="right-container">
 <h3>Requested Reservations</h3>
-<% current_user.requested_reservations.each do |reservation| %>
+<% @user.requested_reservations.each do |reservation| %>
   <%= render template: "reservations/_show", locals: {reservation: reservation} %>
 <% end %>
 <h3>Received Reservations</h3>
-<% current_user.received_reservations.each do |reservation| %>
+<% @user.received_reservations.each do |reservation| %>
   <%= render template: "reservations/_show", locals: {reservation: reservation} %>
 <% end %>
 
 <h3>Spaces Owned</h3>
-<% current_user.spaces.each do |space| %>
+<% @user.spaces.each do |space| %>
   <%= render template: "spaces/_show", locals: {space: space} %>
 <% end %>
 </div>
