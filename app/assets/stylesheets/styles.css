@@ -41,7 +41,9 @@ ul.topnav li.icon {display: none;}
   font-size: 220%;
   font-family: 'Varela Round', sans-serif;
 }
-
+.edit-btn {
+  margin-bottom:60px;
+}
 .landing-container {
   background: linear-gradient(to right, black,black, transparent), url("http://www.emeraldhs.com/wp-content/uploads/2015/11/Parking.jpg") no-repeat center;
   background-size: cover;
@@ -181,15 +183,17 @@ i.material-icons {
 }
 
 .space-container {
+
   font-size:130%;
   height:600px;
   float:left;
 }
 
 .space-card {
+
   width:200px;
   margin:auto;
-  height:200px;
+  height:150px;
   clear:both;
   float:left;
 }
