@@ -22,7 +22,8 @@ class SearchController < ApplicationController
           longitude: location.longitude,
           infobox: (render_to_string("search/_infobox", layout: false, locals: {location: location, space_params: @space_params})) }
         end
-        render :json => @results
+        render :json => { :markers => @results,
+                          :center => Geocoder.coordinates(params[:search])}
       end
     else
       render :json => { :fail => "No available parking spots in range." }

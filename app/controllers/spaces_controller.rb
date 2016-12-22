@@ -9,16 +9,17 @@ class SpacesController < ApplicationController
 
   def new
     @location = Location.find_by_id(params[:location_id])
-    @space = Space.new()
+    render :json => { :space_form => (render_to_string("spaces/_form", layout: false, locals: {location: @location, space: Space.new})) }
   end
 
   def create
-    @space = Space.create(space_params)
-    redirect_to locations_path(@space.location_id)
+    p params
+    p @space = Space.create(space_params)
+    redirect_to @space.location
   end
 
   def space_params
-    params.require(:space).permit(:size, :description, :space_active).merge(location_id: params[:location_id])
+    params.require(:space).permit(:size, :price, :description, :space_active).merge(location_id: params[:location_id])
   end
 
 end

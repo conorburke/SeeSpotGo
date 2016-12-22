@@ -1,9 +1,27 @@
 <!-- map goes here -->
 <!-- get started button -->
+<!-- Location Registration -->
+<div id="locationmodal" style="display: none;">
+  <h2>List Your Space</h2>
+  <div class="row" id="space-location-form-container">
+    <%= render "home/location_selector" %>
+  </div>
+
+  <div id="form-div">
+    <%= render "locations/form" %>
+  </div>
+
+  <% unless current_user %>
+    <a href="#loginmodal" class="modaltrigger" >Log in</a><br>
+    <a href="#registermodal" class="modaltrigger" >Sign up</a><br>
+  <% end %>
+</div>
+
 <div class="landing-container">
   <h2>Never drive around in circles again.</h2>
   <h3>View parking spaces in your area, updated in real time.</h3>
   <a href="/search" class="btn btn-primary home-btn" >Find Parking</a>
+  <a href="#locationmodal" class="modaltrigger btn btn-primary home-btn" >List Your Space</a><br>
 </div>
 <div class="row-container">
   <div class="block-container">
