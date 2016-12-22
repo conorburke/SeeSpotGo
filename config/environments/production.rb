@@ -84,8 +84,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_cable.allowed_request_origins = ['https://vast-caverns-19863.herokuapp.com',
-                                               'http://vast-caverns-19863.herokuapp.com']
+  config.action_cable.allowed_request_origins = ['https://seespotgo.herokuapp.com',
+                                               'http://seespotgo.herokuapp.com']
 
-  config.action_cable.url = "wss://sitepoint-actioncable.herokuapp.com/cable"
+  config.action_cable.url = "wss://seespotgo.herokuapp.com/cable"
 end
