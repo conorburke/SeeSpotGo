@@ -1,0 +1,71 @@
+<div class="navbar navbar-inverse">
+  <div class="navbar-collapse collapse navbar-inverse-collapse">
+    <div class="heading-container row">
+      <div class="heading col-md-9">
+        <h1 class="search-header">
+          Reserve a Spot
+        </h1>
+      </div>
+      <div class="toggle-container col-md-3">
+        <form class="view-switch-form">
+          <input checked="true" data-off="List View" data-on="Map View" data-toggle="toggle" id="view-toggle" type="checkbox"></input>
+          <input class="hidden" type="submit"></input>
+        </form>
+      </div>
+    </div>
+    <div class="ey_nav_div">
+      <%= form_tag("search/query", method: :get, class: "navbar-form") do %>
+        <div class="location-container row">
+          <div class="long-label col-md-12">
+            <%= label_tag "Search for parking around:" %>
+            <br>
+          </div>
+          <div class="address-container col-md-8">
+            <%= text_field_tag :search, params[:search], placeholder: "city, state, zip, address", class: "form-control" %>
+          </div>
+          <div class="range-container col-md-4">
+            <%= select_tag :miles, options_for_select([["within 1 mile", "1"], ["within 2 miles", "2"], ["within 5 miles", "5"]]), class: "form-control" %>
+          </div>
+          <br>
+        </div>
+        <%= label_tag "Size of Vehicle:" %>
+        <%= link_to "help" %>
+        <br>
+        <%= select_tag :size, options_for_select([["motorcycle", "motorcycle"], ["compact", "compact"], ["standard", "standard"], ["large", "large"], ["RV", "RV"]], "standard"), class: "form-control" %>
+        <br>
+        <div class="price-container row">
+          <div class="long-label col-md-12">
+            <%= label_tag "Price Range ($ per hour) :" %>
+            <br>
+          </div>
+          <div class="price-constrain-container col-md-4">
+            <%= select_tag :constrain, options_for_select([["Any", "any"], ["Less than or Equal to", "less_than_or_equal_to"]]), class: "form-control" %>
+          </div>
+          <div class="price-number-container col-md-8">
+            <%= number_field_tag :price, 2 %>
+            <br>
+          </div>
+        </div>
+        <div class="time-container row">
+          <div class="start-time-container col-md-12">
+            <%= label_tag "Start Time:" %>
+            <br>
+            <%= datetime_field_tag :start_time %>
+            <br>
+          </div>
+          <div class="end-time-container col-md-12">
+            <%= label_tag "End Time:" %>
+            <br>
+            <%= datetime_field_tag :end_time %>
+            <br>
+          </div>
+        </div>
+        <div class="alert alert-danger col-md-12 hidden">
+          <span class="glyphicon glyphicon-exclamation-sign"></span>
+          <span class="error-message"></span>
+        </div>
+        <input class="btn btn-info search-submit" type="submit" value="Find Parking"></input>
+      <% end %>
+    </div>
+  </div>
+</div>

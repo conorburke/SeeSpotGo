@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require cable
 
+
 $(function () {
 
   var rating = $(".star-ratings").closest(".rating-container").find(".rating").text()
@@ -53,3 +54,4 @@ $(function () {
   });
 
 });
+
