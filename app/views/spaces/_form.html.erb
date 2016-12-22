@@ -1,20 +1,36 @@
-  <%= form_for [@location, @space] do |f| %>
-    <div class="field">
-      <%= f.label :size %><br/>
-      <%= f.text_field :size, autofocus: true %>
+  <%= form_for [location, space] do |f| %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field form-group">
+          <%= f.label :size %><br />
+          <%= select_tag :size, options_for_select([["Motorcycle", "motorcycle"], ['Compact', "compact"], ["Standard", "standard"], ["Large", "large"], ["RV", "RV"]], "standard"), class: "selectpicker form-control" %>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="field form-group">
+          <%= f.label "Price ($ per hr)" %><br/>
+          <%= f.number_field :price, autofocus: true, value: 2, class: "btn-custom" %>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="field form-group">
+          <%= f.label :description %><br/>
+          <%= f.text_area :description, autofocus: true, class: "btn-custom", placeholder: "(Optional)" %>
+        </div>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :description %><br/>
-      <%= f.text_area :description, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :space_active %><br/>
-      <%= f.check_box :space_active, autofocus: true %>
-    </div>
-
+    <div class="row">
+      <div class="col-xs-8">
+        <%= f.label "For Rent" %><br/>
+      </div>
+      <div class="field col-xs-4 toggle-label">
+        <%= f.check_box :space_active, id: "active-toggle", "checked" => true, "data-toggle" => "toggle", "data-on" => "On", "data-off" => "Off" %>
+      </div>
+    </div><br>
     <div class="actions">
-      <%= f.submit "Submit" %>
+      <%= f.submit "List Space", class: "btn btn-primary" %>
     </div>
   <% end %>

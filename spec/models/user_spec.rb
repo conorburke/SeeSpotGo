@@ -46,6 +46,10 @@ RSpec.describe User, type: :model do
     it 'returns 0 if there are no ratings' do
         expect(rater.average_rating).to eq 0
     end
+
+    it 'returns full name of user' do
+        expect(user.full_name).to eq "Conor Burke"
+    end
   end
 end
 

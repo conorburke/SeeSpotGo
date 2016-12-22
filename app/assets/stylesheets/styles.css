@@ -375,7 +375,7 @@ li span a {
     display: none;
 }
 
-#loginmodal, #registermodal {
+#loginmodal, #registermodal, #locationmodal {
   width: 300px;
   padding: 15px 20px;
   background: #f3f6fa;
@@ -387,15 +387,19 @@ li span a {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-#loginmodal label, #registermodal label {
+#loginmodal label, #registermodal label, #locationmodal label {
   color: #7c8291;
 }
 
-#loginmodal h2, #registermodal h2 {
+#new_space div.field.col-xs-4.toggle-label label.btn.btn-primary.toggle-on {
+  color: white;
+}
+
+#loginmodal h2, #registermodal h2, #locationmodal h2 {
   text-align: center;
 }
 
-#loginmodal input, #registermodal input {
+#loginmodal input, #registermodal input, #locationmodal input {
   width: 100%;
 }
 
@@ -442,6 +446,30 @@ input#user_remember_me {
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec;
+}
+
+/* Location/Space Form */
+.btn-group.bootstrap-select {
+  width: 100%;
+}
+
+.btn-custom {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+}
+
+textarea {
+  width: 100%;
 }
 
 /* List Partial */
