@@ -56,7 +56,7 @@ Location.all.each do |location|
 end
 
 3.times do |n|
-  ChatRoom.create(title: Location.find(n+1).street_address, location_id: Location.find(n+1).id, user_id: 1)
+  ChatRoom.create(title: "Chat with: #{Location.find(n+1).owner.first_name}", location_id: Location.find(n+1).id, user_id: 1)
 end
 
 
